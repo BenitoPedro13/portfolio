@@ -19,7 +19,7 @@ const Hero = () => {
 						variants={textVariant(1.1)}
 						className={`${styles.heroHeading}`}
 					>
-						Metaverse
+						Frontend
 					</motion.h1>
 					<motion.div
 						variants={textVariant(1.2)}
