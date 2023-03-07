@@ -41,8 +41,8 @@ const Hero = () => {
 						src="/cover.png"
 						alt="cover"
 						className="w-full sm:h-[500px] h-[350px] object-cover rounded-tl-[140px] z-10 relative"
-						width="350"
-						height="350"
+						width="500"
+						height="500"
 					/>
 
 					<a href="#explore">
