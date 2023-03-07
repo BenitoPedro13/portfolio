@@ -107,7 +107,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "utils/motion.js"  ],
   "exclude": [
     "node_modules"
   ]
