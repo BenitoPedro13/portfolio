@@ -22,7 +22,7 @@ const Navbar = () => (
         height="24"
       />
       <h2 className="font-extrabold text-[24px] leading-[30px] text-white uppercase">
-        benitopedro.tech
+        benito pedro
       </h2>
       <Image
         src="/menu.svg"
