@@ -5,7 +5,9 @@ import { motion } from 'framer-motion';
 import styles from '../styles';
 import { fadeIn } from '../utils/motion';
 
-const ExploreCard = ({ id, imgUrl, title, index, active, handleClick }) => (
+export type Props = {id: number, imgUrl: string, title: string, index: number, active: number, handleClick: any}
+
+const ExploreCard = ({ id, imgUrl, title, index, active, handleClick }: Props) => (
   <motion.div
     variants={fadeIn('right', 'spring', index * 0.5, 0.75)}
     className={`relative ${

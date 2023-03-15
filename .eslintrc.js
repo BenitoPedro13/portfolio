@@ -4,18 +4,21 @@ module.exports = {
     es2021: true,
   },
   extends: [
-    'plugin:react/recommended',
-    'airbnb',
-    'plugin:@next/next/recommended',
+    'eslint:recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended'
   ],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
+      tsx: true,
       jsx: true,
     },
     ecmaVersion: 12,
     sourceType: 'module',
   },
   plugins: [
+    '@typescript-eslint',
     'react',
   ],
   rules: {
@@ -78,24 +81,24 @@ module.exports = {
     'jsx-a11y/no-autofocus': 0,
     'jsx-a11y/no-static-element-interactions': 0,
     'react/no-array-index-key': 0,
-    'jsx-a11y/anchor-is-valid': [
-      'error',
-      {
-        components: [
-          'Link',
-        ],
-        specialLink: [
-          'to',
-          'hrefLeft',
-          'hrefRight',
-        ],
-        aspects: [
-          'noHref',
-          'invalidHref',
-          'preferButton',
-        ],
-      },
-    ],
+    // 'jsx-a11y/anchor-is-valid': [
+    //   'error',
+    //   {
+    //     components: [
+    //       'Link',
+    //     ],
+    //     specialLink: [
+    //       'to',
+    //       'hrefLeft',
+    //       'hrefRight',
+    //     ],
+    //     aspects: [
+    //       'noHref',
+    //       'invalidHref',
+    //       'preferButton',
+    //     ],
+    //   },
+    // ],
   },
   settings: {
     'import/resolver': {
@@ -105,5 +108,4 @@ module.exports = {
       },
     },
   },
-
 };
