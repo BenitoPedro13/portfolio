@@ -19,15 +19,14 @@ const Hero = () => {
 						variants={textVariant(1.1)}
 						className={`${styles.heroHeading}`}
 					>
-						Frontend
+						Desenvolvendo novos Universos 
 					</motion.h1>
 					<motion.div
 						variants={textVariant(1.2)}
 						className="flex flex-row justify-center items-center"
 					>
-						<h1 className={styles.heroHeading}>Ma</h1>
 						<div className={`${styles.heroDText}`} />
-						<h1 className={styles.heroHeading}>Ness</h1>
+						<h1 className={styles.heroHeading}>esenvolvido</h1>
 					</motion.div>
 				</div>
 				<motion.div
