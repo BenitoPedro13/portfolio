@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 import React from 'react';
 import { textContainer, textVariant2 } from '../utils/motion.js';
 
-export type Props = {textStyles: string, title: Iterable<React.ReactNode>}
-export type Props1 = {textStyles: string, title: React.ReactNode}
+export type Props = {textStyles?: string, title: Iterable<React.ReactNode>}
+export type Props1 = {textStyles?: string, title: React.ReactNode}
 
 export const TypingText = ({ textStyles, title }: Props) => (
   <motion.p
