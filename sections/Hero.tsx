@@ -25,7 +25,7 @@ const Hero = () => {
 						variants={textVariant(1.2)}
 						className="flex flex-row justify-center items-center"
 					>
-						novos Universos
+						<h1 className={styles.heroHeading}>novos Universos </h1>
 					</motion.div>
 				</div>
 				<motion.div
