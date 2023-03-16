@@ -9,7 +9,7 @@ import { staggerContainer } from '../utils/motion';
 import { ExploreCard, TitleText, TypingText } from '../components';
 
 const Explore = () => {
-  const [active, setActive] = useState(2);
+  const [active, setActive] = useState('');
 
   return (
     <section className={`${styles.paddings}`} id="explore">
@@ -30,7 +30,7 @@ const Explore = () => {
             <ExploreCard
               key={world.id}
               {...world}
-              id={Number.parseInt(world.id)}
+              id={world.id}
               index={index}
               active={active}
               handleClick={setActive}

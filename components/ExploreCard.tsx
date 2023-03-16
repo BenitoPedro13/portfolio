@@ -1,11 +1,12 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { Dispatch, SetStateAction } from 'react';
 
 import styles from '../styles';
 import { fadeIn } from '../utils/motion';
 
-export type Props = {id: number, imgUrl: string, title: string, index: number, active: number, handleClick: any}
+export type Props = {id: string, imgUrl: string, title: string, index: number, active: string, handleClick: Dispatch<SetStateAction<string>>}
 
 const ExploreCard = ({ id, imgUrl, title, index, active, handleClick }: Props) => (
   <motion.div
