@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 import styles from '../styles';
 import { fadeIn, staggerContainer, zoomIn } from '../utils/motion';
@@ -39,7 +40,7 @@ const Feedback = () => (
         variants={fadeIn('left', 'tween', 0.2, 1)}
         className="relative flex-1 flex justify-center items-center"
       >
-        <img
+        <Image
           src="/planet-09.webp"
           alt="planet-09"
           className="w-full lg:h-[610px] h-auto min-h-[210px] object-cover rounded-[40px]"
@@ -51,7 +52,7 @@ const Feedback = () => (
         >
           <a href="#explore">
 						
-            <img
+            <Image
             src="/stamp.webp"
             alt="stamp"
             className="w-[155px] h-[155px] object-contain"
