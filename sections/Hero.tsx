@@ -38,9 +38,9 @@ const Hero = () => {
           <div className="absolute w-full h-[300px] hero-gradient rounded-tl-[140px] z-[0] -top-[30px]" />
 
           <div className="sm:h-[500px] h-[350px] ">
-            <Image
+            <img
               src="/cover.webp"
-              fill
+            //   fill
               alt="cover"
               className="w-full object-cover rounded-tl-[140px] z-10 relative"
             />
