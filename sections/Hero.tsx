@@ -2,9 +2,9 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { relative } from "path";
 import styles from "../styles";
 import { slideIn, staggerContainer, textVariant } from "../utils/motion.js";
+import coverPng from '../public/cover.webp'
 
 const Hero = () => {
   return (
@@ -39,7 +39,7 @@ const Hero = () => {
 
           <div className="sm:h-[500px] h-[350px] ">
             <Image
-              src="/cover.webp"
+              src={coverPng}
               fill
               alt="cover"
               className="w-full object-cover rounded-tl-[140px] z-10 relative"
