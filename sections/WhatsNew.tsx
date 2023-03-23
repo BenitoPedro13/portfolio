@@ -32,12 +32,12 @@ const WhatsNew = () => (
 
       <motion.div
         variants={planetVariants('right')}
-        className={`flex-1 ${styles.flexCenter}`}
+        className={`flex-1 ${styles.flexCenter} w-[90%] h-[90%] object-contain`}
       >
         <Image
           src="/whats-new.webp"
           alt="get-started"
-          className="w-[90%] h-[90%] object-contain"
+          fill
         />
       </motion.div>
     </motion.div>

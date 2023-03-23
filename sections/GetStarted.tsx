@@ -18,12 +18,12 @@ const GetStarted = () => (
     >
       <motion.div
         variants={planetVariants('left')}
-        className={`flex-1 ${styles.flexCenter}`}
+        className={`flex-1 ${styles.flexCenter} w-[90%] h-[90%] object-contain`}
       >
         <Image
           src="/get-started.webp"
           alt="get-started"
-          className="w-[90%] h-[90%] object-contain"
+          fill
         />
       </motion.div>
       <motion.div

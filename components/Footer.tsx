@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import { socials } from '../constants';
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { socials } from "../constants";
 
-import styles from '../styles';
-import { footerVariants } from '../utils/motion';
+import styles from "../styles";
+import { footerVariants } from "../utils/motion";
 
 const Footer = () => (
   <motion.footer
@@ -18,17 +18,27 @@ const Footer = () => (
     <div className={`${styles.innerWidth} mx-auto flex flex-col gap-8`}>
       <div className="flex items-center justify-between flex-wrap gap-5">
         <h4 className="font-bold md:text-[64px] text-[44px] text-white">
-          Enter the Metaverse
+          Entre em contato
         </h4>
-        <button type="button" className="flex items-center h-fit py-4 px-6 bg-[#25618B] rounded-[32px] gap-[12px]">
-          <Image
-            src="/headset.svg"
-            alt="headset"
-            className="w-[24px] h-[24px] object-contain"
-          />
+        <button
+          type="button"
+          className="flex items-center h-fit py-4 px-6 bg-[#25618B] rounded-[32px] gap-[12px]"
+        >
+          <div className="w-[24px] h-[24px] flex items-center">
+            <Image
+              src="/headset.svg"
+              width={24}
+              height={18}
+              alt="headset"
+              className=" object-contain"
+            />
+          </div>
+        <a href="https://wa.me/5521987854401">
           <span className="font-normal text-[16px] text-white">
             Entre em contato
           </span>
+        </a>
+          
         </button>
       </div>
 
@@ -40,17 +50,22 @@ const Footer = () => (
             Benito Pedro
           </h4>
           <p className="font-normal text-[14px] text-white opacity-50">
-            Copyright © 2021 - 2023 All rights reserved | Benito Pedro Xavier Neto
+            Copyright © 2021 - 2023 All rights reserved | Benito Pedro Xavier
+            Neto
           </p>
 
           <div className="flex gap-4">
-            {socials.map((social) => (
-              <Image
-                key={social.name}
-                src={social.url}
-                alt={social.name}
-                className="w-[24px] h-[24px] object-contain cursor-pointer"
-              />
+            {socials.map((social, i) => (
+              <div key={i} className="w-[24px] h-[24px]">
+                <Image
+                  key={social.name}
+                  src={social.url}
+                  alt={social.name}
+                  width={30}
+                  height={30}
+                  className="object-contain cursor-pointer"
+                />
+              </div>
             ))}
           </div>
         </div>

@@ -20,7 +20,8 @@ const ExploreCard = ({ id, imgUrl, title, index, active, handleClick }: Props) =
     <Image
       src={imgUrl}
       alt="planet-04"
-      className="absolute w-full h-full object-cover rounded-[24px]"
+      fill
+      className="absolute rounded-[24px]"
     />
     {active !== id ? (
       <h3 className="font-semibold sm:text-[26px] text-[18px] text-white absolute z-0 lg:bottom-20 lg:rotate-[-90deg] lg:origin-[0,0]">
@@ -34,6 +35,8 @@ const ExploreCard = ({ id, imgUrl, title, index, active, handleClick }: Props) =
           <Image
             src="/headset.svg"
             alt="headset"
+            width={30}
+            height={30}
             className="w-1/2 h-1/2 object-contain"
           />
         </div>

@@ -19,6 +19,7 @@ const InsightCard = ({ imgUrl, title, subtitle, index }: Props) => (
   >
     <Image
       src={imgUrl}
+      fill
       alt="planet-01"
       className="md:w-[270px] w-full h-[250px] rounded-[32px] object-cover"
     />
@@ -35,11 +36,15 @@ const InsightCard = ({ imgUrl, title, subtitle, index }: Props) => (
       <div
         className="lg:flex hidden items-center justify-center w-[100px] h-[100px] rounded-full bg-transparent border-[1px] border-white"
       >
-        <Image
+        <div className="w-[40%] h-[40%]">
+          <Image
+          fill
           src="/arrow.svg"
           alt="arrow"
-          className="w-[40%] h-[40%] object-contain"
+          className=" object-contain"
         />
+        </div>
+        
       </div>
     </div>
   </motion.div>
