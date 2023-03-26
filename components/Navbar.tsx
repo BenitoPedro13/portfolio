@@ -23,7 +23,7 @@ const Navbar = () => (
         className="w-[24px] h-[24px] object-contain flex items-center"
       /> */}
       <h2 className="font-extrabold text-[24px] leading-[30px] text-white uppercase flex items-center">
-        marcus dutra
+        benito tech
       </h2>
       {/* <HamburguerMenu/> */}
     </div>
