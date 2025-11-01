@@ -1,17 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import {
-  ArrowRight,
-  Github,
-  Layers,
-  Linkedin,
-  Mail,
-  Rocket,
-  ShieldCheck,
-  Sparkles,
-  Workflow,
-} from 'lucide-react';
+import { ArrowRight, Calendar, Github, Linkedin, Mail, Sparkles } from 'lucide-react';
 
 import { GradientBackground } from '@/components/animate-ui/components/backgrounds/gradient';
 import { MorphingText } from '@/components/animate-ui/primitives/texts/morphing';
@@ -24,13 +14,6 @@ import {
   AvatarGroup,
   AvatarGroupTooltip,
 } from '@/components/animate-ui/components/animate/avatar-group';
-import {
-  Tabs,
-  TabsList,
-  TabsTrigger,
-  TabsContents,
-  TabsContent,
-} from '@/components/animate-ui/components/animate/tabs';
 import { StarsBackground } from '@/components/animate-ui/components/backgrounds/stars';
 
 const collaborators = [
@@ -60,49 +43,28 @@ const collaborators = [
   },
 ];
 
-const features = [
+const valueProps = [
   {
-    value: 'workflow',
-    label: 'Motion-first workflow',
-    icon: Workflow,
+    title: '5+ anos construindo experiências web',
     description:
-      'Compose interactions with shared motion primitives, granular control, and instant feedback directly in your React code.',
-    bullets: [
-      'Timeline-aware primitives with sensible defaults',
-      'Autonomous layout transitions powered by Motion',
-      'Type-safe APIs that mirror your design intent',
-    ],
+      'Especialista em React, Next.js e TypeScript, entregando produtos escaláveis com foco em UX e performance.',
   },
   {
-    value: 'library',
-    label: 'Curated component library',
-    icon: Layers,
+    title: 'Liderança técnica na Mainnet Design',
     description:
-      'Combine 500+ kinetic components—from cursors to product sections—designed to snap into modern design systems.',
-    bullets: [
-      'Composable building blocks for backgrounds, text, and surfaces',
-      'Accessible out of the box with Radix foundations',
-      'Theme-aware tokens that respond to dark or light UI',
-    ],
+      'Coordeno squads multidisciplinares, mentoro desenvolvedores e garanto entregas confiáveis do discovery ao deploy.',
   },
   {
-    value: 'confidence',
-    label: 'Production confidence',
-    icon: ShieldCheck,
+    title: 'Visão full stack fim a fim',
     description:
-      'Ship experiences that feel polished from first render to last interaction with batteries-included tooling.',
-    bullets: [
-      'Motion-safe fallbacks for reduced motion preferences',
-      'Granular bundle control via per-component imports',
-      'Guided handoffs with docs, demos, and playground presets',
-    ],
+      'Integro front-end e back-end com Node.js, NestJS, bancos relacionais e cloud (AWS, GCP, Vercel).',
   },
 ];
 
 const stats = [
-  { label: 'Components', value: '560+' },
-  { label: 'Motion presets', value: '120' },
-  { label: 'Teams building', value: '28K' },
+  { label: 'Anos de experiência', value: '5+' },
+  { label: 'Liderança técnica', value: 'Mainnet Design' },
+  { label: 'Stack principal', value: 'React · Next.js · TS' },
 ];
 
 const projects = [
@@ -129,31 +91,85 @@ const projects = [
   },
 ];
 
-const expertise = [
+const timeline = [
   {
-    title: 'Product Engineering',
-    copy: 'From concept to deploy, shipping features that blend delightful UX with durable code.',
+    company: 'Mainnet Design',
+    role: 'Partner & Lead Front-end',
+    period: '2022 — presente',
+    bullets: [
+      'Lidero o roadmap técnico de produtos digitais, alinhando design, engenharia e stakeholders.',
+      'Mentoro desenvolvedores em padrões de componente, acessibilidade e revisões de código.',
+      'Orquestro infraestrutura multiambiente em Vercel, AWS e pipelines de CI/CD.',
+    ],
   },
   {
-    title: 'Design to Code',
-    copy: 'Translating complex Figma systems into maintainable components with responsive motion.',
+    company: 'Juicy Space',
+    role: 'Senior Front-end Engineer',
+    period: '2020 — 2022',
+    bullets: [
+      'Entreguei plataformas de marketing imersivas com foco em SEO, analytics e integrações headless CMS.',
+      'Implementei sistemas de design reutilizáveis para acelerar lançamentos e manter consistência visual.',
+    ],
   },
   {
-    title: 'Full Stack Architecture',
-    copy: 'APIs, authentication, databases, and cloud infrastructure crafted for scale and reliability.',
+    company: 'Trivod',
+    role: 'Full Stack Developer',
+    period: '2018 — 2020',
+    bullets: [
+      'Desenvolvi produtos SaaS com autenticação, billing e integrações com APIs de terceiros.',
+      'Modelei bancos de dados e fluxos de deploy garantindo observabilidade e estabilidade.',
+    ],
+  },
+];
+
+const services = [
+  {
+    title: 'Desenvolvimento Web',
+    copy: 'Interfaces responsivas, acessíveis e integradas a APIs escaláveis em React/Next.',
+  },
+  {
+    title: 'SaaS & Produtos Digitais',
+    copy: 'Arquitetura completa de aplicações com autenticação, billing e observabilidade.',
+  },
+  {
+    title: 'Web Design & Handoff',
+    copy: 'Transformo sistemas de design em componentes prontos para produção com documentação clara.',
+  },
+  {
+    title: 'Infraestrutura & DevOps',
+    copy: 'Pipelines CI/CD, automação de deploy e gestão de ambientes em Vercel, AWS e GCP.',
+  },
+];
+
+const stack = [
+  {
+    title: 'Front-end',
+    items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Radix'],
+  },
+  {
+    title: 'Back-end',
+    items: ['Node.js', 'NestJS', 'REST', 'gRPC', 'GraphQL'],
+  },
+  {
+    title: 'Cloud & DevOps',
+    items: ['Vercel', 'AWS', 'Google Cloud', 'Docker', 'CI/CD'],
+  },
+  {
+    title: 'Ferramentas',
+    items: ['Figma', 'Storybook', 'Plausible', 'Jira', 'Linear'],
   },
 ];
 
 const testimonials = [
   {
     quote:
-      'Benito shapes ideas into refined product experiences. He bridges design and engineering with unmatched ownership.',
+      'Benito transforma ideias em experiências digitais refinadas. Ele conecta design e engenharia com liderança exemplar.',
     name: 'Gabriel Nogueira',
     role: 'Partner & Design Lead · Mainnet Design',
   },
   {
     quote:
-      'Our team ships faster thanks to his motion-first component mindset. Every deliverable exceeds expectations.',
+      'Nosso time entrega mais rápido graças à visão de componentes e motion do Benito. Cada release supera expectativas.',
     name: 'Júlia Santos',
     role: 'Product Manager · Juicy Space',
   },
@@ -189,13 +205,13 @@ export default function Home() {
           </Link>
           <div className="hidden items-center gap-6 md:flex">
             <a href="#work" className="hover:text-white">
-              Work
+              Projetos
             </a>
-            <a href="#expertise" className="hover:text-white">
-              Expertise
+            <a href="#experience" className="hover:text-white">
+              Experiência
             </a>
-            <a href="#testimonials" className="hover:text-white">
-              Testimonials
+            <a href="#services" className="hover:text-white">
+              Serviços
             </a>
           </div>
           <div className="flex items-center gap-2 text-slate-200">
@@ -220,7 +236,7 @@ export default function Home() {
               className="inline-flex items-center gap-2 rounded-full border border-slate-100/20 bg-slate-100 px-4 py-2 text-xs font-semibold tracking-[0.3em] text-slate-900 transition hover:-translate-y-[1px] hover:shadow-[0_18px_35px_-16px_rgba(148,163,184,0.85)]"
             >
               <Mail className="size-4" />
-              Contact
+              Contato
             </a>
           </div>
         </nav>
@@ -242,26 +258,26 @@ export default function Home() {
           <div className="mx-auto grid max-w-5xl gap-12 lg:grid-cols-[1.6fr_1fr]">
             <div>
               <span className="inline-flex items-center justify-center rounded-full border border-indigo-400/40 bg-slate-950/80 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-slate-100/90 shadow-[0_25px_60px_-35px_rgba(129,140,248,0.8)]">
-                Crafted with Animate&nbsp;UI
+                Desenvolvedor Front-end &amp; Full Stack
               </span>
 
               <h1 className="mt-10 text-4xl font-semibold tracking-tight text-white drop-shadow-[0_18px_60px_rgba(15,23,42,0.7)] sm:text-5xl lg:text-6xl">
-                Design experiences that feel{' '}
+                Eu potencializo produtos digitais{' '}
                 <span className="mt-4 inline-flex flex-wrap items-baseline gap-2 sm:block">
                   <MorphingText
                     loop
                     holdDelay={2600}
-                    text={['alive.', 'immersive.', 'effortless.']}
+                    text={['escaláveis.', 'imersivos.', 'orientados a impacto.']}
                     className="bg-gradient-to-r from-sky-200 via-indigo-200 to-fuchsia-200 bg-clip-text text-4xl font-semibold text-transparent drop-shadow-[0_18px_60px_rgba(99,102,241,0.6)] sm:text-5xl lg:text-6xl"
                   />
                 </span>
               </h1>
 
               <p className="mt-8 text-base leading-relaxed text-slate-100/90 sm:text-lg">
-                Elevate product moments with motion-native UI patterns, polished
-                cursors, ambient backgrounds, and expressive text effects. This
-                portfolio demonstrates how I combine engineering and design to
-                deliver cinematic yet performant user interfaces.
+                Mais de 5 anos transformando visões em experiências web pixel-perfect com React, Next.js e TypeScript, aliando estratégia de produto, design system e engenharia.
+              </p>
+              <p className="mt-6 text-base leading-relaxed text-slate-100/80 sm:text-lg">
+                Como líder técnico na Mainnet Design, conduzo equipes multidisciplinares, mentoro devs e integro front-end e back-end com infraestrutura em nuvem para entregar resultados medidos.
               </p>
 
               <div className="mt-12 flex flex-wrap items-center gap-4">
@@ -269,16 +285,14 @@ export default function Home() {
                   href="#work"
                   className="group inline-flex items-center gap-3 rounded-full border border-transparent bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:-translate-y-[2px] hover:shadow-[0_18px_45px_-18px_rgba(148,163,184,0.55)]"
                 >
-                  See selected work
+                  Ver projetos
                   <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                 </Link>
                 <a
-                  href="https://animate-ui.com"
-                  target="_blank"
-                  rel="noreferrer"
+                  href="mailto:benitopedro21@outlook.com?subject=Quero%20marcar%20uma%20conversa"
                   className="inline-flex items-center gap-3 rounded-full border border-indigo-400/40 bg-slate-950/80 px-6 py-3 text-sm font-semibold text-white transition hover:border-indigo-300/60 hover:bg-indigo-500/10"
                 >
-                  Explore Animate UI
+                  Marcar conversa
                   <Sparkles className="size-4" />
                 </a>
               </div>
@@ -308,7 +322,7 @@ export default function Home() {
                 </AvatarGroup>
 
                 <div className="rounded-full border border-indigo-300/30 bg-slate-950/70 px-5 py-2 text-xs uppercase tracking-[0.45em] text-slate-100/70 backdrop-blur">
-                  Trusted by teams in 90+ countries
+                  Liderança técnica em squads globais
                 </div>
               </div>
             </div>
@@ -316,12 +330,10 @@ export default function Home() {
             <div className="flex flex-col gap-6 rounded-3xl border border-slate-700/60 bg-slate-950/80 p-6 backdrop-blur-2xl shadow-[0_40px_90px_-35px_rgba(67,56,202,0.55)]">
               <div className="space-y-3 rounded-2xl border border-indigo-500/30 bg-gradient-to-br from-slate-950 via-indigo-950/40 to-transparent p-6 shadow-[0_35px_70px_-25px_rgba(99,102,241,0.55)]">
                 <h2 className="text-lg font-semibold text-white/90">
-                  Front-end · Full Stack
+                  Soluções digitais ponta a ponta
                 </h2>
                 <p className="text-sm text-slate-100/90">
-                  I help companies ship ambitious product visions—from design
-                  systems to SaaS platforms—with a focus on motion, clarity, and
-                  maintainability.
+                  Do discovery ao pós-lançamento, combino visão estratégica, engenharia rigorosa e narrativa visual para acelerar iniciativas digitais.
                 </p>
               </div>
               <div className="grid gap-4 sm:grid-cols-2">
@@ -345,88 +357,29 @@ export default function Home() {
 
         <section className="relative px-6 py-24 sm:px-10 lg:px-24">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(30,64,175,0.18),transparent_75%)]" />
-          <div className="relative z-10 mx-auto max-w-5xl text-center">
-            <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              Build richer stories with motion intelligence
+          <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center text-center">
+            <span className="inline-flex items-center justify-center rounded-full border border-slate-700/60 bg-slate-900/70 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-slate-200/80">
+              Destaques rápidos
+            </span>
+            <h2 className="mt-6 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              Valor entregue em cada parceria
             </h2>
-            <p className="mt-6 text-base text-slate-100/85 sm:text-lg">
-              Mix and match ambient surfaces, kinetic controls, and expressive
-              text to create your signature product rhythm in minutes.
+            <p className="mt-6 max-w-3xl text-base text-slate-100/85 sm:text-lg">
+              Experiência, liderança e visão full stack para construir produtos digitais que equilibram impacto de negócio, performance e experiência.
             </p>
           </div>
 
-          <Tabs
-            defaultValue="workflow"
-            className="relative z-10 mx-auto mt-14 w-full max-w-5xl space-y-6"
-          >
-            <TabsList className="relative mx-auto w-full max-w-xl justify-between bg-slate-900/70 p-[3px] border border-slate-700/60 rounded-xl shadow-[0_25px_60px_-35px_rgba(30,64,175,0.55)]">
-              {features.map((feature) => (
-                <TabsTrigger key={feature.value} value={feature.value}>
-                  <feature.icon className="size-4" />
-                  {feature.label}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-
-            <TabsContents className="rounded-3xl border border-slate-800/70 bg-slate-950/70 p-10 backdrop-blur-xl shadow-[0_40px_80px_-50px_rgba(15,23,42,0.95)]">
-              {features.map((feature) => (
-                <TabsContent
-                  key={feature.value}
-                  value={feature.value}
-                  className="flex flex-col gap-10 lg:flex-row lg:items-center"
-                >
-                  <div className="flex-1 space-y-6 text-left">
-                    <div className="inline-flex items-center gap-2 rounded-full border border-slate-700/60 bg-slate-900/70 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-slate-200/80">
-                      <feature.icon className="size-4" />
-                      Focus
-                    </div>
-                    <p className="text-lg font-medium text-white sm:text-xl">
-                      {feature.description}
-                    </p>
-                    <ul className="space-y-3 text-sm text-slate-100/80 sm:text-base">
-                      {feature.bullets.map((bullet) => (
-                        <li
-                          key={bullet}
-                          className="flex items-center gap-3 rounded-xl border border-slate-800/70 bg-slate-900/70 px-4 py-3"
-                        >
-                          <Sparkles className="size-4 text-sky-300" />
-                          <span>{bullet}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="flex-1 rounded-2xl border border-slate-800/70 bg-gradient-to-br from-slate-950 via-slate-900/30 to-slate-900/10 p-8 shadow-[0_35px_70px_-25px_rgba(15,23,42,0.85)]">
-                    <div className="flex h-full flex-col justify-between gap-6">
-                      <div className="space-y-3">
-                        <h3 className="text-lg font-semibold text-white/90">
-                          Prototype-ready animations
-                        </h3>
-                        <p className="text-sm text-slate-300/90">
-                          Drop in motion primitives for tabs, command palettes,
-                          hero reveals, task timelines, and more. Every piece
-                          plays nicely with your design tokens.
-                        </p>
-                      </div>
-                      <div className="grid gap-4">
-                        <div className="rounded-2xl border border-slate-800/70 bg-slate-900/70 p-4 backdrop-blur">
-                          <div className="flex items-center gap-3 text-sm text-slate-200">
-                            <Rocket className="size-4 text-fuchsia-300" />
-                            Launch components in weeks, not quarters.
-                          </div>
-                        </div>
-                        <div className="rounded-2xl border border-slate-800/70 bg-slate-900/70 p-4 backdrop-blur">
-                          <div className="flex items-center gap-3 text-sm text-slate-200">
-                            <Layers className="size-4 text-sky-300" />
-                            Layer ambient backgrounds with glossy surfaces.
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </TabsContent>
-              ))}
-            </TabsContents>
-          </Tabs>
+          <div className="relative z-10 mx-auto mt-14 grid max-w-5xl gap-6 md:grid-cols-3">
+            {valueProps.map((item) => (
+              <div
+                key={item.title}
+                className="flex h-full flex-col justify-between rounded-3xl border border-slate-800/70 bg-slate-950/70 p-6 text-left backdrop-blur transition hover:-translate-y-1 hover:border-slate-500/60 hover:bg-slate-900/70 shadow-[0_30px_70px_-35px_rgba(30,64,175,0.55)]"
+              >
+                <h3 className="text-lg font-semibold text-white">{item.title}</h3>
+                <p className="mt-4 text-sm text-slate-200/90">{item.description}</p>
+              </div>
+            ))}
+          </div>
         </section>
 
         <section
@@ -437,15 +390,13 @@ export default function Home() {
           <div className="relative z-10 mx-auto max-w-5xl space-y-12">
             <div className="flex flex-col gap-4 text-center sm:text-left">
               <span className="inline-flex items-center justify-center rounded-full border border-slate-700/60 bg-slate-900/70 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-slate-200/80">
-                Selected work
+                Projetos em destaque
               </span>
               <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-                Recent projects that blend craft and impact
+                Projetos recentes que unem craft e impacto
               </h2>
               <p className="text-base text-slate-100/85 sm:text-lg">
-                A snapshot of the product experiences I have led—from design
-                systems to revenue platforms—built with meticulous motion and
-                engineering discipline.
+                Um recorte das experiências digitais que liderei — de sistemas de design a plataformas SaaS — com foco em performance, qualidade e storytelling.
               </p>
             </div>
 
@@ -477,7 +428,7 @@ export default function Home() {
                     href={project.href}
                     className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-slate-100/80 transition hover:text-white hover:gap-3"
                   >
-                    View case study
+                    Ver estudo de caso
                     <ArrowRight className="size-4" />
                   </Link>
                 </article>
@@ -487,30 +438,122 @@ export default function Home() {
         </section>
 
         <section
-          id="expertise"
+          id="experience"
           className="relative px-6 py-24 sm:px-10 lg:px-24"
         >
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(67,56,202,0.16),transparent_75%)]" />
-          <div className="relative z-10 mx-auto max-w-5xl space-y-10">
-            <div className="text-center">
-              <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-                Expertise that supports product lifecycles end to end
+          <div className="relative z-10 mx-auto max-w-5xl space-y-12">
+            <div className="text-center sm:text-left">
+              <span className="inline-flex items-center justify-center rounded-full border border-slate-700/60 bg-slate-900/70 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-slate-200/80">
+                Linha do tempo profissional
+              </span>
+              <h2 className="mt-6 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+                Liderança e entrega em múltiplos contextos
               </h2>
-              <p className="mt-4 text-base text-slate-100/85 sm:text-lg">
-                I partner with teams as a strategic builder—from early discovery
-                to post-launch iteration—with a motion-first mindset.
+              <p className="mt-4 max-w-3xl text-base text-slate-100/85 sm:text-lg">
+                Atuação transversal em consultorias, produtos SaaS e squads internos, combinando visão estratégica, execução técnica e mentoria.
               </p>
             </div>
-            <div className="grid gap-6 md:grid-cols-3">
-              {expertise.map((item) => (
+            <div className="relative border-l border-slate-800/60 pl-8 sm:pl-12">
+              <div className="absolute left-0 top-0 h-full w-px bg-gradient-to-b from-indigo-400/60 via-slate-700/60 to-transparent" />
+              <div className="space-y-12">
+                {timeline.map((item) => (
+                  <div key={item.company} className="relative space-y-4">
+                    <div className="absolute -left-[33px] top-1 grid size-6 place-items-center rounded-full border border-indigo-400/60 bg-slate-950/90 text-[10px] font-semibold uppercase tracking-[0.2em] text-indigo-200/80">
+                      ●
+                    </div>
+                    <div className="flex flex-wrap items-center justify-between gap-3">
+                      <h3 className="text-lg font-semibold text-white">
+                        {item.role}
+                      </h3>
+                      <span className="text-xs uppercase tracking-[0.3em] text-slate-300">
+                        {item.period}
+                      </span>
+                    </div>
+                    <p className="text-sm font-medium text-slate-200/90">{item.company}</p>
+                    <ul className="space-y-2 text-sm text-slate-200/80">
+                      {item.bullets.map((bullet) => (
+                        <li
+                          key={bullet}
+                          className="flex gap-3"
+                        >
+                          <span className="mt-1 inline-block size-1 rounded-full bg-indigo-400" />
+                          <span>{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="services"
+          className="relative px-6 py-24 sm:px-10 lg:px-24"
+        >
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(16,185,129,0.15),transparent_75%)]" />
+          <div className="relative z-10 mx-auto max-w-5xl space-y-10">
+            <div className="text-center">
+              <span className="inline-flex items-center justify-center rounded-full border border-slate-700/60 bg-slate-900/70 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-slate-200/80">
+                Serviços &amp; soluções
+              </span>
+              <h2 className="mt-6 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+                Do protótipo ao scale-up com o mesmo parceiro
+              </h2>
+              <p className="mt-4 text-base text-slate-100/85 sm:text-lg">
+                Parcerias sob demanda para acelerar produtos digitais, com entregas claras, documentação e acompanhamento contínuo.
+              </p>
+            </div>
+            <div className="grid gap-6 md:grid-cols-2">
+              {services.map((service) => (
                 <div
-                  key={item.title}
-                  className="rounded-3xl border border-slate-800/70 bg-slate-950/70 p-6 text-left backdrop-blur transition hover:-translate-y-1 hover:border-slate-500/60 hover:bg-slate-900/70 shadow-[0_30px_70px_-40px_rgba(67,56,202,0.65)]"
+                  key={service.title}
+                  className="rounded-3xl border border-slate-800/70 bg-slate-950/70 p-6 text-left backdrop-blur transition hover:-translate-y-1 hover:border-slate-400/60 hover:bg-slate-900/70 shadow-[0_30px_80px_-45px_rgba(16,185,129,0.55)]"
                 >
-                  <h3 className="text-lg font-semibold text-white">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 text-sm text-slate-200/90">{item.copy}</p>
+                  <h3 className="text-lg font-semibold text-white">{service.title}</h3>
+                  <p className="mt-3 text-sm text-slate-200/90">{service.copy}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="stack"
+          className="relative px-6 py-24 sm:px-10 lg:px-24"
+        >
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(59,130,246,0.16),transparent_75%)]" />
+          <div className="relative z-10 mx-auto max-w-5xl space-y-10">
+            <div className="text-center">
+              <span className="inline-flex items-center justify-center rounded-full border border-slate-700/60 bg-slate-900/70 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-slate-200/80">
+                Stack &amp; ferramentas
+              </span>
+              <h2 className="mt-6 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+                Escolhas técnicas para velocidade e confiabilidade
+              </h2>
+              <p className="mt-4 text-base text-slate-100/85 sm:text-lg">
+                Ferramentas que sustentam entregas rápidas, seguras e observáveis em ambientes de alta exigência.
+              </p>
+            </div>
+            <div className="grid gap-6 md:grid-cols-2">
+              {stack.map((group) => (
+                <div
+                  key={group.title}
+                  className="flex h-full flex-col gap-4 rounded-3xl border border-slate-800/70 bg-slate-950/70 p-6 text-left backdrop-blur transition hover:-translate-y-1 hover:border-slate-400/60 hover:bg-slate-900/70 shadow-[0_30px_80px_-45px_rgba(59,130,246,0.55)]"
+                >
+                  <div className="text-sm uppercase tracking-[0.3em] text-slate-300">{group.title}</div>
+                  <div className="flex flex-wrap gap-2 text-sm font-medium text-slate-100">
+                    {group.items.map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-full border border-slate-700/60 bg-slate-900/70 px-3 py-1"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
@@ -525,11 +568,10 @@ export default function Home() {
           <div className="relative z-10 mx-auto max-w-5xl space-y-10">
             <div className="text-center">
               <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-                Partners value ownership and clarity
+                Depoimentos de quem constrói junto
               </h2>
               <p className="mt-4 text-base text-slate-100/85 sm:text-lg">
-                Feedback from collaborators who have seen creative vision turn
-                into polished product experiences.
+                Colaboradores e parceiros que vivenciaram entregas com ownership, clareza e foco em impacto real.
               </p>
             </div>
             <div className="grid gap-6 md:grid-cols-2">
@@ -551,57 +593,49 @@ export default function Home() {
         </section>
 
         <section
-          id="get-started"
+          id="contato"
           className="relative mx-6 mb-24 overflow-hidden rounded-3xl border border-slate-800/70 bg-gradient-to-br from-slate-950 via-slate-900/60 to-slate-950 px-8 py-16 text-center shadow-[0_45px_120px_-55px_rgba(59,130,246,0.65)] sm:mx-10 lg:mx-24 lg:px-16 lg:py-20"
         >
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.22),transparent_65%)]" />
           <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center gap-10">
             <div className="inline-flex items-center gap-3 rounded-full border border-slate-700/60 bg-slate-900/80 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-slate-100/80">
-              Let&apos;s build together
+              Vamos conversar
             </div>
             <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              Level up every touchpoint with cinematic UI moments
+              Pronto para acelerar seu próximo produto digital
             </h2>
             <p className="text-base text-slate-100/85 sm:text-lg">
-              Install once, compose infinitely. Animate UI pairs beautifully
-              with shadcn/ui foundations, allowing you to drop motion-rich
-              experiences into dashboards, marketing sites, or product
-              interfaces.
+              Conte comigo para liderar iniciativas front-end e full stack, alinhar stakeholders e entregar interfaces de alto impacto com bases escaláveis.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4">
-              <Link
-                href="https://animate-ui.com/docs/mcp"
-                target="_blank"
-                rel="noreferrer"
+              <a
+                href="mailto:benitopedro21@outlook.com"
                 className="inline-flex items-center gap-3 rounded-full border border-transparent bg-white px-8 py-3 text-sm font-semibold text-slate-900 transition hover:-translate-y-[2px] hover:shadow-[0_25px_60px_-18px_rgba(148,163,184,0.7)]"
               >
-                Read the MCP guide
-                <ArrowRight className="size-4" />
-              </Link>
-              <Link
-                href="https://ui.shadcn.com"
+                <Mail className="size-4" />
+                Enviar e-mail
+              </a>
+              <a
+                href="https://www.linkedin.com/in/benitopedrox/"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-3 rounded-full border border-slate-600/60 px-8 py-3 text-sm font-semibold text-white transition hover:border-slate-200/70 hover:bg-slate-800/70"
               >
-                Browse the combined registry
-                <Sparkles className="size-4" />
-              </Link>
+                <Linkedin className="size-4" />
+                Conectar no LinkedIn
+              </a>
+              <a
+                href="https://cal.com/benitopedrox/intro"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-3 rounded-full border border-indigo-400/40 bg-slate-950/80 px-8 py-3 text-sm font-semibold text-white transition hover:border-indigo-300/60 hover:bg-indigo-500/10"
+              >
+                <Calendar className="size-4" />
+                Agendar conversa
+              </a>
             </div>
-            <div className="grid w-full gap-6 text-sm uppercase tracking-[0.3em] text-slate-200/90 sm:grid-cols-3">
-              {stats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="rounded-2xl border border-slate-700/60 bg-slate-900/70 px-6 py-5 backdrop-blur"
-                >
-                  <div className="text-2xl font-semibold text-white">
-                    {stat.value}
-                  </div>
-                  <div className="mt-2 text-[11px] text-slate-300">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
+            <div className="text-sm text-slate-200/80">
+              Ou fale diretamente pelo WhatsApp: <span className="font-medium text-white">+55 (21) 9 8384-9852</span>
             </div>
           </div>
         </section>
