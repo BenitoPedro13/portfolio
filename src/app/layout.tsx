@@ -4,6 +4,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { NotificationProvider } from "@/components/ui/alignui/notification-provider";
 import { Toaster } from "@/components/ui/alignui/toast";
+import Link from "next/link";
+import { Mail } from "lucide-react";
 
 const inter = FontSans({
   subsets: ["latin"],
@@ -31,10 +33,41 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${inter.variable} ${geistSans.variable} ${geistMono.variable} antialiased dark`}
-      >
+    <html
+      lang="en"
+      className={`${inter.variable} ${geistSans.variable} ${geistMono.variable} antialiased relative min-h-screen bg-bg-strong-950`}
+    >
+      <header className="sticky top-8 w-full z-20 px-6 sm:px-10 lg:px-24">
+        <nav className="mx-auto flex max-w-5xl items-center gap-6 rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm text-slate-100/80 backdrop-blur-2xl shadow-[0_18px_70px_-40px_rgba(148,163,184,0.6)]">
+          <Link
+            href="/"
+            className="text-xs font-semibold uppercase tracking-[0.35em] text-white no-underline"
+          >
+            Benito Xavier
+          </Link>
+          <div className="hidden flex-1 items-center justify-center gap-6 text-xs uppercase tracking-[0.3em] md:flex">
+            <a href="#work" className="transition hover:text-white">
+              Projetos
+            </a>
+            <a href="#experience" className="transition hover:text-white">
+              Experiência
+            </a>
+            <a href="#services" className="transition hover:text-white">
+              Serviços
+            </a>
+          </div>
+          <div className="flex items-center justify-end">
+            <a
+              href="mailto:benitopedro21@outlook.com"
+              className="inline-flex items-center gap-2 rounded-full border border-white/60 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-slate-900 transition hover:-translate-y-[1px] hover:shadow-[0_20px_45px_-18px_rgba(255,255,255,0.55)]"
+            >
+              <Mail className="size-3.5" />
+              Contato
+            </a>
+          </div>
+        </nav>
+      </header>
+      <body>
         {children}
         <NotificationProvider />
         <Toaster />
