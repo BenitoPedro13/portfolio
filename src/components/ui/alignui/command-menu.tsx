@@ -6,7 +6,7 @@ import * as React from 'react';
 import { type DialogProps } from '@radix-ui/react-dialog';
 import { Command } from 'cmdk';
 
-import * as Modal from '@/components/ui/modal';
+import * as Modal from '@/components/ui/alignui/modal';
 import { cn } from '@/utils/cn';
 import { PolymorphicComponentProps } from '@/utils/polymorphic';
 import { tv, type VariantProps } from '@/utils/tv';

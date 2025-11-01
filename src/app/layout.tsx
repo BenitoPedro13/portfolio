@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { NotificationProvider } from "@/components/ui/notification-provider";
-import { Toaster } from "@/components/ui/toast";
+import { NotificationProvider } from "@/components/ui/alignui/notification-provider";
+import { Toaster } from "@/components/ui/alignui/toast";
 
 const inter = FontSans({
   subsets: ["latin"],

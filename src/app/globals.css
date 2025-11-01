@@ -1,4 +1,7 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
 
 @theme {
   /* AlignUI Raw Colors */
@@ -17,7 +20,7 @@
   --color-gray-alpha-24: 71.55% 0.0000 0 / 24%;
   --color-gray-alpha-16: 71.55% 0.0000 0 / 16%;
   --color-gray-alpha-10: 71.55% 0.0000 0 / 10%;
-  
+
   --color-slate-950: 18.26% 0.0196 265.90;
   --color-slate-900: 22.37% 0.0201 271.70;
   --color-slate-800: 26.63% 0.0210 272.98;
@@ -219,7 +222,7 @@
   /* AlignUI Semantic Colors */
   --color-static-black: var(--color-neutral-950);
   --color-static-white: var(--color-neutral-0);
-  
+
   --color-bg-strong-950: var(--color-neutral-950);
   --color-bg-surface-800: var(--color-neutral-800);
   --color-bg-sub-300: var(--color-neutral-300);
@@ -289,190 +292,165 @@
   --color-stable-lighter: var(--color-teal-50);
 
   /* AlignUI Typography System - Dynamic from tokens.ts */
-  
+
   --font-size-title-h1: 3.5rem;
   --line-height-title-h1: 4rem;
   --letter-spacing-title-h1: -0.01em;
   --font-weight-title-h1: 500;
-  
-  
+
   --font-size-title-h2: 3rem;
   --line-height-title-h2: 3.5rem;
   --letter-spacing-title-h2: -0.01em;
   --font-weight-title-h2: 500;
-  
-  
+
   --font-size-title-h3: 2.5rem;
   --line-height-title-h3: 3rem;
   --letter-spacing-title-h3: -0.01em;
   --font-weight-title-h3: 500;
-  
-  
+
   --font-size-title-h4: 2rem;
   --line-height-title-h4: 2.5rem;
   --letter-spacing-title-h4: -0.005em;
   --font-weight-title-h4: 500;
-  
-  
+
   --font-size-title-h5: 1.5rem;
   --line-height-title-h5: 2rem;
   --letter-spacing-title-h5: 0em;
   --font-weight-title-h5: 500;
-  
-  
+
   --font-size-title-h6: 1.25rem;
   --line-height-title-h6: 1.75rem;
   --letter-spacing-title-h6: 0em;
   --font-weight-title-h6: 500;
-  
-  
+
   --font-size-label-xl: 1.5rem;
   --line-height-label-xl: 2rem;
   --letter-spacing-label-xl: -0.015em;
   --font-weight-label-xl: 500;
-  
-  
+
   --font-size-label-lg: 1.125rem;
   --line-height-label-lg: 1.5rem;
   --letter-spacing-label-lg: -0.015em;
   --font-weight-label-lg: 500;
-  
-  
+
   --font-size-label-md: 1rem;
   --line-height-label-md: 1.5rem;
   --letter-spacing-label-md: -0.011em;
   --font-weight-label-md: 500;
-  
-  
+
   --font-size-label-sm: .875rem;
   --line-height-label-sm: 1.25rem;
   --letter-spacing-label-sm: -0.006em;
   --font-weight-label-sm: 500;
-  
-  
+
   --font-size-label-xs: .75rem;
   --line-height-label-xs: 1rem;
   --letter-spacing-label-xs: 0em;
   --font-weight-label-xs: 500;
-  
-  
+
   --font-size-paragraph-xl: 1.5rem;
   --line-height-paragraph-xl: 2rem;
   --letter-spacing-paragraph-xl: -0.015em;
   --font-weight-paragraph-xl: 400;
-  
-  
+
   --font-size-paragraph-lg: 1.125rem;
   --line-height-paragraph-lg: 1.5rem;
   --letter-spacing-paragraph-lg: -0.015em;
   --font-weight-paragraph-lg: 400;
-  
-  
+
   --font-size-paragraph-md: 1rem;
   --line-height-paragraph-md: 1.5rem;
   --letter-spacing-paragraph-md: -0.011em;
   --font-weight-paragraph-md: 400;
-  
-  
+
   --font-size-paragraph-sm: .875rem;
   --line-height-paragraph-sm: 1.25rem;
   --letter-spacing-paragraph-sm: -0.006em;
   --font-weight-paragraph-sm: 400;
-  
-  
+
   --font-size-paragraph-xs: .75rem;
   --line-height-paragraph-xs: 1rem;
   --letter-spacing-paragraph-xs: 0em;
   --font-weight-paragraph-xs: 400;
-  
-  
+
   --font-size-subheading-md: 1rem;
   --line-height-subheading-md: 1.5rem;
   --letter-spacing-subheading-md: 0.06em;
   --font-weight-subheading-md: 500;
-  
-  
+
   --font-size-subheading-sm: .875rem;
   --line-height-subheading-sm: 1.25rem;
   --letter-spacing-subheading-sm: 0.06em;
   --font-weight-subheading-sm: 500;
-  
-  
+
   --font-size-subheading-xs: .75rem;
   --line-height-subheading-xs: 1rem;
   --letter-spacing-subheading-xs: 0.04em;
   --font-weight-subheading-xs: 500;
-  
-  
+
   --font-size-subheading-2xs: .6875rem;
   --line-height-subheading-2xs: .75rem;
   --letter-spacing-subheading-2xs: 0.02em;
   --font-weight-subheading-2xs: 500;
-  
-  
+
   --font-size-doc-label: 1.125rem;
   --line-height-doc-label: 2rem;
   --letter-spacing-doc-label: -0.015em;
   --font-weight-doc-label: 500;
-  
-  
+
   --font-size-doc-paragraph: 1.125rem;
   --line-height-doc-paragraph: 2rem;
   --letter-spacing-doc-paragraph: -0.015em;
   --font-weight-doc-paragraph: 400;
-  
-  
 
   /* AlignUI Shadow System - Dynamic from tokens.ts */
-  
+
   --shadow-regular-xs: 0 1px 2px 0 #0a0d1408;
-  
+
   --shadow-regular-sm: 0 2px 4px #1b1c1d0a;
-  
+
   --shadow-regular-md: 0 16px 32px -12px #0e121b1a;
-  
+
   --shadow-button-primary-focus: 0 0 0 2px var(--color-bg-white-0), 0 0 0 4px var(--color-primary-alpha-10);
-  
+
   --shadow-button-important-focus: 0 0 0 2px var(--color-bg-white-0), 0 0 0 4px var(--color-neutral-alpha-16);
-  
+
   --shadow-button-error-focus: 0 0 0 2px var(--color-bg-white-0), 0 0 0 4px var(--color-red-alpha-10);
-  
+
   --shadow-fancy-buttons-neutral: 0 1px 2px 0 #1b1c1d7a, 0 0 0 1px #242628;
-  
+
   --shadow-fancy-buttons-primary: 0 1px 2px 0 #0e121b3d, 0 0 0 1px var(--color-primary-base);
-  
+
   --shadow-fancy-buttons-error: 0 1px 2px 0 #0e121b3d, 0 0 0 1px var(--color-error-base);
-  
+
   --shadow-fancy-buttons-stroke: 0 1px 3px 0 #0e121b1f, 0 0 0 1px var(--color-stroke-soft-200);
-  
+
   --shadow-toggle-switch: 0 6px 10px 0 #0e121b0f, 0 2px 4px 0 #0e121b08;
-  
+
   --shadow-switch-thumb: 0 4px 8px 0 #1b1c1d0f, 0 2px 4px 0 #0e121b14;
-  
+
   --shadow-tooltip: 0 12px 24px 0 #0e121b0f, 0 1px 2px 0 #0e121b08;
-  
+
   --shadow-custom-xs: 0 0 0 1px rgba(51, 51, 51, 0.04), 0 4px 8px -2px rgba(51, 51, 51, 0.06), 0 2px 4px rgba(51, 51, 51, 0.04), 0 1px 2px rgba(51, 51, 51, 0.04), inset 0 -1px 1px -0.5px rgba(51, 51, 51, 0.06);
-  
+
   --shadow-custom-sm: 0 0 0 1px rgba(51, 51, 51, 0.04), 0 16px 8px -8px rgba(51, 51, 51, 0.01), 0 12px 6px -6px rgba(51, 51, 51, 0.02), 0 5px 5px -2.5px rgba(51, 51, 51, 0.08), 0 1px 3px -1.5px rgba(51, 51, 51, 0.16), inset 0 -0.5px 0.5px rgba(51, 51, 51, 0.08);
-  
+
   --shadow-custom-md: 0 0 0 1px rgba(51, 51, 51, 0.04), 0 1px 1px 0.5px rgba(51, 51, 51, 0.04), 0 3px 3px -1.5px rgba(51, 51, 51, 0.02), 0 6px 6px -3px rgba(51, 51, 51, 0.04), 0 12px 12px -6px rgba(51, 51, 51, 0.04), 0 24px 24px -12px rgba(51, 51, 51, 0.04), 0 48px 48px -24px rgba(51, 51, 51, 0.04), inset 0 -1px 1px -0.5px rgba(51, 51, 51, 0.06);
-  
+
   --shadow-custom-lg: 0 0 0 1px rgba(51, 51, 51, 0.04), 0 1px 1px 0.5px rgba(51, 51, 51, 0.04), 0 3px 3px -1.5px rgba(51, 51, 51, 0.02), 0 6px 6px -3px rgba(51, 51, 51, 0.04), 0 12px 12px -6px rgba(51, 51, 51, 0.04), 0 24px 24px -12px rgba(51, 51, 51, 0.04), 0 48px 48px -24px rgba(51, 51, 51, 0.04), 0 96px 96px -32px rgba(51, 51, 51, 0.06), inset 0 -1px 1px -0.5px rgba(51, 51, 51, 0.06);
-  
 
   /* AlignUI Border Radius System - Dynamic from tokens.ts */
-  
+
   --radius-10: .625rem;
-  
+
   --radius-20: 1.25rem;
-  
 
   /* AlignUI Animation System - Dynamic from tokens.ts */
-  
+
   --animate-accordion-down: accordion-down 0.2s ease-out;
-  
+
   --animate-accordion-up: accordion-up 0.2s ease-out;
-  
+
 }
 
 /* Dark Mode Support - Tailwind v4.1 CSS Variables */
@@ -549,7 +527,7 @@
     --color-overlay-gray: 32.11% 0.0000 0 / 56%;
     --color-overlay-slate: 30.90% 0.0210 265.90 / 56%;
     --color-overlay: var(--color-overlay-gray);
-    
+
     --color-social-apple: 100.00% 0.0000 0;
     --color-social-twitter: 100.00% 0.0000 0;
     --color-social-github: 100.00% 0.0000 0;
@@ -633,7 +611,7 @@
   --color-overlay-gray: 32.11% 0.0000 0 / 56%;
   --color-overlay-slate: 30.90% 0.0210 265.90 / 56%;
   --color-overlay: var(--color-overlay-gray);
-  
+
   --color-social-apple: 100.00% 0.0000 0;
   --color-social-twitter: 100.00% 0.0000 0;
   --color-social-github: 100.00% 0.0000 0;
@@ -641,6 +619,37 @@
   --color-social-tidal: 100.00% 0.0000 0;
   --color-social-amazon: 100.00% 0.0000 0;
   --color-social-zendesk: 100.00% 0.0000 0;
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
 }
 
 /* Keyframe Animations - AlignUI System */
@@ -709,4 +718,91 @@ body {
   font-family: Inter, Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+
+  }
+  body {
+    @apply bg-background text-foreground;
+
+  }
+
 }

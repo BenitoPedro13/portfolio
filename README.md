@@ -1,36 +1,117 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Benito Xavier – Portfolio
 
-## Getting Started
+Modern, motion-driven portfolio built with Next.js, Animate UI, and Tailwind CSS to showcase my work as a Front-end & Full Stack Developer. The site blends cinematic UI elements with a focus on usability, performance, and storytelling.
 
-First, run the development server:
+---
+
+## ✨ Highlights
+
+- **Animate UI motion system**: Gradient backgrounds, morphing text, animated cursor, and tabbed storytelling powered by Animate UI’s MCP registry.
+- **Composable architecture**: Decoupled components, reusable primitives, and type-safe utilities to evolve the site alongside new projects.
+- **Accessibility & performance-first**: Motion preferences respected, Radix-backed primitives, and responsive layouts tested across devices.
+- **Scalable foundations**: Ready for future case studies, blog posts, and language versions with minimal refactoring.
+
+---
+
+## 🧠 About Benito
+
+- Front-end specialist with **5+ years** crafting pixel-perfect experiences using React, Next.js, and TypeScript.
+- Strong full stack background: Node.js, NestJS, REST/gRPC APIs, authentication, and database design.
+- Leads development initiatives at **Mainnet Design**, mentoring devs, managing infrastructure, and aligning multi-disciplinary teams.
+- Comfortable across AWS, Google Cloud, Vercel, CI/CD pipelines, Docker, DNS, and environment orchestration.
+- Passionate about design handoff, problem solving, continuous learning, and high-quality maintainable code.
+
+---
+
+## 🛠 Tech Stack
+
+- **Framework**: Next.js 15 (App Router, React 19)
+- **Styling**: Tailwind CSS v4, custom design tokens, CSS variables
+- **Animation & UI**: Animate UI MCP registry, Motion, Radix primitives
+- **Type Safety & Tooling**: TypeScript, ESLint, pnpm, shadcn CLI
+- **Deployment-ready**: Vercel-first setup with automated builds
+
+---
+
+## 🚀 Getting Started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+# 1. Install dependencies
+pnpm install
+
+# 2. Run the development server
 pnpm dev
-# or
-bun dev
+
+# 3. Build for production
+pnpm build && pnpm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Requirements:
+- Node.js 20+
+- pnpm 8+
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Environment variables are not required by default. Add `.env.local` if you integrate analytics, CMS, or form handlers.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 📂 Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+  app/
+    layout.tsx         # Global layout + metadata
+    page.tsx           # Animated landing page
+    globals.css        # Tailwind v4 global tokens
+  components/
+    animate-ui/        # Generated Animate UI components
+    example-table.tsx  # Sample data table (shadcn)
+  hooks/
+    use-is-in-view.tsx # Intersection observer hook
+  lib/
+    get-strict-context.tsx # Type-safe context utility
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🧩 Animations & UI
 
-## Deploy on Vercel
+Generated via MCP:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `GradientBackground` – ambient gradient wash
+- `MorphingText` – animated headline transitions
+- `CursorProvider / Cursor / CursorFollow` – custom cursor + tooltip
+- `AvatarGroup` – hoverable collaborator cards
+- `Tabs` – motion-enhanced content reveal
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 📈 Roadmap Ideas
+
+- Add project case studies with MDX content
+- Integrate contact form (e.g., Resend, Formspree)
+- Light/dark theme toggle and reduced-motion enhancements
+- Analytics (Plausible or GA4) for portfolio insights
+
+---
+
+## 🤝 Services
+
+- Web development & design handoff
+- SaaS product development
+- Database architecture
+- Cloud infrastructure & DevOps (AWS, GCP, Vercel)
+
+---
+
+## 📬 Contact
+
+- Email: benitopedro21@outlook.com
+- Phone/WhatsApp: +55 (21) 9 8384-9852
+- LinkedIn: [linkedin.com/in/benitopedrox](https://www.linkedin.com/in/benitopedrox/)
+- GitHub: [github.com/benitopedro13](https://github.com/benitopedro13)
+
+---
+
+## 📄 License
+
+This portfolio is proprietary and represents personal work. Do not reuse or redistribute without explicit permission.

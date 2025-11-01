@@ -6,7 +6,7 @@ import { Slot } from '@radix-ui/react-slot';
 import {
   IconEmptyCompany,
   IconEmptyUser,
-} from '@/components/ui/avatar-empty-icons';
+} from '@/components/ui/alignui/avatar-empty-icons';
 import { cn } from '@/utils/cn';
 import { recursiveCloneChildren } from '@/utils/recursive-clone-children';
 import { tv, type VariantProps } from '@/utils/tv';

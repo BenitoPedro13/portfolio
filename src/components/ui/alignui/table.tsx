@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 
-import * as Divider from '@/components/ui/divider';
+import * as Divider from '@/components/ui/alignui/divider';
 import { cn } from '@/utils/cn';
 
 const Table = React.forwardRef<

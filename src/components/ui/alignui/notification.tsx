@@ -10,7 +10,7 @@ import {
   RiMagicFill,
 } from '@remixicon/react';
 
-import * as Alert from '@/components/ui/alert';
+import * as Alert from '@/components/ui/alignui/alert';
 import { cn } from '@/utils/cn';
 
 const NotificationProvider = NotificationPrimitives.Provider;

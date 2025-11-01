@@ -7,8 +7,8 @@ import {
   RiMagicFill,
 } from '@remixicon/react';
 
-import * as Alert from '@/components/ui/alert';
-import { toast } from '@/components/ui/toast';
+import * as Alert from '@/components/ui/alignui/alert';
+import { toast } from '@/components/ui/alignui/toast';
 
 type AlertToastProps = {
   t: string | number;

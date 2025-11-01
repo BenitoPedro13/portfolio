@@ -17,12 +17,12 @@ import {
   type SortingState,
 } from '@tanstack/react-table';
 
-import * as Avatar from '@/components/ui/avatar';
-import * as Button from '@/components/ui/button';
-import * as Checkbox from '@/components/ui/checkbox';
-import * as FileFormatIcon from '@/components/ui/file-format-icon';
-import * as StatusBadge from '@/components/ui/status-badge';
-import * as Table from '@/components/ui/table';
+import * as Avatar from '@/components/ui/alignui/avatar';
+import * as Button from '@/components/ui/alignui/button';
+import * as Checkbox from '@/components/ui/alignui/checkbox';
+import * as FileFormatIcon from '@/components/ui/alignui/file-format-icon';
+import * as StatusBadge from '@/components/ui/alignui/status-badge';
+import * as Table from '@/components/ui/alignui/table';
 
 const data: Data[] = [
   {
