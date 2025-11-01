@@ -1,6 +1,52 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@layer base {
+  @font-face {
+    font-family: "Alpha Cyberpunk";
+    src:
+      url("/fonts/alphacyberpunk-regular.otf") format("opentype"),
+      url("/fonts/alphacyberpunk-regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Alpha Cyberpunk";
+    src:
+      url("/fonts/alphacyberpunk-italic.otf") format("opentype"),
+      url("/fonts/alphacyberpunk-italic.ttf") format("truetype");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Blasse";
+    src:
+      url("/fonts/blasse.otf") format("opentype"),
+      url("/fonts/blasse.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+}
+
+@layer utilities {
+  .font-alpha-cyberpunk {
+    font-family: "Alpha Cyberpunk", sans-serif;
+  }
+
+  .font-blasse {
+    font-family: "Blasse", sans-serif;
+  }
+
+  .font-press-start-2p {
+    font-family: var(--font-press-start-2p), monospace;
+  }
+}
+
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @theme {
@@ -519,6 +565,19 @@
     height: var(--radix-accordion-content-height);
     opacity: 1;
   }
+}
+
+@keyframes shine {
+  from {
+    background-position: 100%
+  }
+  to {
+    background-position: -100%
+  }
+}
+
+.animate-shine {
+  animation: shine 5s linear infinite;
 }
 
 @keyframes accordion-up {
