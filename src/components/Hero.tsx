@@ -74,7 +74,7 @@ export const AuroraHero = () => {
           </div>
         </h1>
         <p className="my-6 max-w-xl text-base leading-relaxed text-gray-200/90 md:text-lg md:leading-relaxed">
-          I've spent the last 5 leading React/Next.js platforms, API ecosystems, and cloud
+          I&apos;ve spent the last 5 leading React/Next.js platforms, API ecosystems, and cloud
           infrastructure that blend pixel-perfect UX with measurable business
           outcomes.
         </p>
