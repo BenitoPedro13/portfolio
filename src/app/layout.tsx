@@ -18,9 +18,19 @@ const pressStart = Press_Start_2P({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolite – Framer Portfolio Template",
+  title: "Benito – Full-Stack Developer",
   description:
-    "Crafting bold brand identities and packaging systems that help founders launch unforgettable experiences.",
+    "Building immersive web apps from concept to cloud. Full-Stack Developer specializing in React, Next.js, Node.js, and cloud solutions.",
+  manifest: "/site.webmanifest",
+  icons: {
+    icon: [
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/android-chrome-192x192.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+    shortcut: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
@@ -29,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${plusJakarta.className} antialiased`}>
+    <html lang="en" className={`${plusJakarta.className} ${pressStart.variable} antialiased`}>
       <body className="relative min-h-screen bg-[#050505] text-white">
         <Header/>
         {children}
