@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Press_Start_2P } from "next/font/google";
+import { Plus_Jakarta_Sans, Press_Start_2P, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { NotificationProvider } from "@/components/ui/alignui/notification-provider";
 import { Toaster } from "@/components/ui/alignui/toast";
-import Header from "@/components/Header";
-
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
+import { GrainOverlay } from "@/components/motion/Backdrop";
+import { profile } from "@/content/profile";
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-sans",
 });
 
 const pressStart = Press_Start_2P({
@@ -17,10 +20,47 @@ const pressStart = Press_Start_2P({
   variable: "--font-press-start-2p",
 });
 
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono",
+});
+
+const siteUrl = "https://benitopedro.dev";
+
 export const metadata: Metadata = {
-  title: "Benito – Full-Stack Developer",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: `${profile.name} — ${profile.role}`,
+    template: `%s · ${profile.shortName}`,
+  },
   description:
-    "Building immersive web apps from concept to cloud. Full-Stack Developer specializing in React, Next.js, Node.js, and cloud solutions.",
+    "Full Stack Developer and Frontend Specialist building immersive web apps from concept to cloud. React, Next.js, NestJS, and cloud infrastructure.",
+  keywords: [
+    "Full Stack Developer",
+    "Frontend Developer",
+    "Next.js",
+    "React",
+    "TypeScript",
+    "NestJS",
+    "Rio de Janeiro",
+    "Benito Pedro Xavier",
+  ],
+  authors: [{ name: profile.name, url: siteUrl }],
+  creator: profile.name,
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteUrl,
+    title: `${profile.name} — ${profile.role}`,
+    description: profile.intro,
+    siteName: profile.name,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${profile.name} — ${profile.role}`,
+    description: profile.intro,
+  },
   manifest: "/site.webmanifest",
   icons: {
     icon: [
@@ -39,10 +79,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${plusJakarta.className} ${pressStart.variable} antialiased`}>
-      <body className="relative min-h-screen bg-[#050505] text-white">
-        <Header/>
-        {children}
+    <html
+      lang="en"
+      className={`${plusJakarta.variable} ${pressStart.variable} ${jetbrains.variable} scroll-smooth antialiased`}
+    >
+      <body
+        className={`${plusJakarta.className} relative min-h-screen bg-[#050505] text-white selection:bg-[#F97316] selection:text-[#0a0503]`}
+      >
+        <GrainOverlay />
+        <SiteHeader />
+        <main className="relative">{children}</main>
+        <SiteFooter />
         <NotificationProvider />
         <Toaster />
       </body>

@@ -1,35 +1,45 @@
 import { AuroraHero } from "@/components/Hero";
 import { Projects } from "@/components/Projects";
-import { About } from "@/components/About";
+import { ExperienceTimeline } from "@/components/ExperienceTimeline";
+import { StackSection } from "@/components/StackSection";
+import { ProcessSection, ServicesSection } from "@/components/ProcessSection";
 import { Contact } from "@/components/Contact";
+import { Divider } from "@/components/motion/Backdrop";
+import { TextMarquee } from "@/components/motion/Marquee";
 
 export default function Home() {
   return (
-    <main>
+    <>
       <AuroraHero />
 
-      {/* divider */}
-      <div className="mx-auto max-w-6xl px-4">
-        <div className="h-px bg-gradient-to-r from-transparent via-[#ffffff15] to-transparent" />
+      <div className="overflow-hidden border-y border-white/[0.05] py-8">
+        <TextMarquee
+          words={[
+            "Full Stack Development",
+            "Pixel-Perfect Interfaces",
+            "API Architecture",
+            "Cloud Infrastructure",
+            "Technical Leadership",
+          ]}
+          speed={34}
+        />
       </div>
 
       <Projects />
+      <Divider />
 
-      <div className="mx-auto max-w-6xl px-4">
-        <div className="h-px bg-gradient-to-r from-transparent via-[#ffffff15] to-transparent" />
-      </div>
+      <ExperienceTimeline />
+      <Divider />
 
-      <About />
+      <ProcessSection />
+      <Divider />
 
-      <div className="mx-auto max-w-6xl px-4">
-        <div className="h-px bg-gradient-to-r from-transparent via-[#ffffff15] to-transparent" />
-      </div>
+      <StackSection />
+      <Divider />
+
+      <ServicesSection />
 
       <Contact />
-
-      <footer className="border-t border-[#ffffff08] py-8 text-center text-xs text-white/20">
-        © {new Date().getFullYear()} Benito Pedro Xavier Neto · Rio de Janeiro, Brazil
-      </footer>
-    </main>
+    </>
   );
 }
