@@ -1,23 +1,35 @@
-import { StarsBackground } from "@/components/animate-ui/components/backgrounds/stars";
 import { AuroraHero } from "@/components/Hero";
-import { cn } from "@/lib/utils";
+import { Projects } from "@/components/Projects";
+import { About } from "@/components/About";
+import { Contact } from "@/components/Contact";
 
 export default function Home() {
   return (
-    <main className="">
-      {/* {" "}
-      <div className="relative inset-0 min-h-screen">
-        <StarsBackground
-          starColor="#fff"
-          className={cn(
-            "absolute inset-0 flex items-center justify-center rounded-xl",
-            "bg-[radial-gradient(ellipse_at_bottom,_#262626_0%,_#000_100%)]"
-          )}
-        />
-      </div> */}
+    <main>
+      <AuroraHero />
 
+      {/* divider */}
+      <div className="mx-auto max-w-6xl px-4">
+        <div className="h-px bg-gradient-to-r from-transparent via-[#ffffff15] to-transparent" />
+      </div>
 
-      <AuroraHero/>
+      <Projects />
+
+      <div className="mx-auto max-w-6xl px-4">
+        <div className="h-px bg-gradient-to-r from-transparent via-[#ffffff15] to-transparent" />
+      </div>
+
+      <About />
+
+      <div className="mx-auto max-w-6xl px-4">
+        <div className="h-px bg-gradient-to-r from-transparent via-[#ffffff15] to-transparent" />
+      </div>
+
+      <Contact />
+
+      <footer className="border-t border-[#ffffff08] py-8 text-center text-xs text-white/20">
+        © {new Date().getFullYear()} Benito Pedro Xavier Neto · Rio de Janeiro, Brazil
+      </footer>
     </main>
   );
 }
