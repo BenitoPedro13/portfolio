@@ -10,7 +10,6 @@ const projects = [
     description:
       "Full-stack monorepo — NestJS API + Next.js dashboard + Refine admin panel. Built with pnpm workspaces for clean separation of concerns.",
     stack: ["TypeScript", "NestJS", "Next.js", "Refine", "pnpm"],
-    color: "#1E67C6",
     github: "https://github.com/BenitoPedro13/bee-dash-monorepo",
     live: null,
   },
@@ -20,7 +19,6 @@ const projects = [
     description:
       "Markdown-powered notes and scheduling app with a clean editor, calendar booking, and real-time preview.",
     stack: ["TypeScript", "Next.js", "TailwindCSS"],
-    color: "#13FFAA",
     github: "https://github.com/BenitoPedro13/markado",
     live: null,
   },
@@ -30,7 +28,6 @@ const projects = [
     description:
       "Convert Instagram post layouts into Figma-ready designs automatically. Extracts layout, colors, and typography.",
     stack: ["TypeScript", "NestJS", "Figma API"],
-    color: "#CE84CF",
     github: "https://github.com/BenitoPedro13/insta2figma",
     live: null,
   },
@@ -40,7 +37,6 @@ const projects = [
     description:
       "Real-time network monitoring dashboard. Tracks latency, packet loss, and bandwidth with live charts.",
     stack: ["TypeScript", "Next.js", "WebSockets"],
-    color: "#DD335C",
     github: "https://github.com/BenitoPedro13/network-monitor",
     live: null,
   },
@@ -50,7 +46,6 @@ const projects = [
     description:
       "Browser-based video format converter powered by FFmpeg WASM. Convert between MP4, WebM, GIF and more — no server needed.",
     stack: ["TypeScript", "Next.js", "FFmpeg WASM"],
-    color: "#F6B51E",
     github: "https://github.com/BenitoPedro13/video-converter",
     live: null,
   },
@@ -60,7 +55,6 @@ const projects = [
     description:
       "Meal planning and fitness nutrition app. Track macros, plan weekly meals, and generate shopping lists.",
     stack: ["TypeScript", "Next.js", "PostgreSQL"],
-    color: "#1E67C6",
     github: "https://github.com/BenitoPedro13/sua-mesa-fit",
     live: null,
   },
@@ -88,13 +82,13 @@ export function Projects() {
           transition={{ duration: 0.6 }}
           className="mb-16 text-center"
         >
-          <span className="mb-4 inline-block rounded-full border border-[#ffffff0b] bg-[#ffffff0d] px-3 py-1 text-xs uppercase tracking-widest text-white/50">
+          <span className="mb-4 inline-block rounded-full border border-[#F97316]/20 bg-[#F97316]/10 px-3 py-1 text-xs uppercase tracking-widest text-[#F97316]/80">
             Work
           </span>
           <h2 className="text-4xl font-medium text-white md:text-5xl">
             Featured Projects
           </h2>
-          <p className="mt-4 text-white/50">
+          <p className="mt-4 text-white/40">
             A selection of things I&apos;ve built recently.
           </p>
         </motion.div>
@@ -111,19 +105,14 @@ export function Projects() {
             <motion.div
               key={p.name}
               variants={item}
-              className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-[#ffffff0b] bg-[#ffffff04] p-6 transition-all duration-300 hover:border-[#ffffff18] hover:bg-[#ffffff08]"
+              className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-[#ffffff0b] bg-[#ffffff04] p-6 transition-all duration-300 hover:border-[#F97316]/30 hover:bg-[#F97316]/5"
             >
-              {/* glow */}
-              <div
-                className="pointer-events-none absolute -top-20 -right-20 h-40 w-40 rounded-full opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-20"
-                style={{ backgroundColor: p.color }}
-              />
+              {/* orange glow on hover */}
+              <div className="pointer-events-none absolute -top-20 -right-20 h-40 w-40 rounded-full bg-[#F97316] opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-15" />
 
               <div>
-                <div
-                  className="mb-4 h-1 w-8 rounded-full"
-                  style={{ backgroundColor: p.color }}
-                />
+                {/* orange accent bar */}
+                <div className="mb-4 h-1 w-8 rounded-full bg-[#F97316]" />
                 <h3 className="mb-2 text-lg font-semibold text-white">
                   {p.title}
                 </h3>
@@ -134,7 +123,7 @@ export function Projects() {
                   {p.stack.map((s) => (
                     <span
                       key={s}
-                      className="rounded-full border border-[#ffffff0b] bg-[#ffffff08] px-2.5 py-0.5 text-xs text-white/60"
+                      className="rounded-full border border-[#ffffff0b] bg-[#ffffff08] px-2.5 py-0.5 text-xs text-white/50"
                     >
                       {s}
                     </span>
@@ -147,7 +136,7 @@ export function Projects() {
                   href={p.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-1.5 rounded-full border border-[#ffffff0b] bg-[#ffffff08] px-3 py-1.5 text-xs text-white/60 transition hover:border-white/20 hover:text-white"
+                  className="flex items-center gap-1.5 rounded-full border border-[#ffffff0b] bg-[#ffffff08] px-3 py-1.5 text-xs text-white/50 transition hover:border-[#F97316]/40 hover:text-[#F97316]"
                 >
                   <Github className="size-3.5" />
                   Code
@@ -157,7 +146,7 @@ export function Projects() {
                     href={p.live}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-1.5 rounded-full border border-[#ffffff0b] bg-[#ffffff08] px-3 py-1.5 text-xs text-white/60 transition hover:border-white/20 hover:text-white"
+                    className="flex items-center gap-1.5 rounded-full border border-[#ffffff0b] bg-[#ffffff08] px-3 py-1.5 text-xs text-white/50 transition hover:border-[#F97316]/40 hover:text-[#F97316]"
                   >
                     <ArrowUpRight className="size-3.5" />
                     Live
@@ -179,7 +168,7 @@ export function Projects() {
             href="https://github.com/BenitoPedro13"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-[#ffffff0b] bg-[#ffffff0d] px-5 py-2.5 text-sm text-white/60 transition hover:border-white/20 hover:text-white"
+            className="inline-flex items-center gap-2 rounded-full border border-[#F97316]/20 bg-[#F97316]/5 px-5 py-2.5 text-sm text-[#F97316]/70 transition hover:border-[#F97316]/40 hover:text-[#F97316]"
           >
             View all on GitHub
             <ArrowUpRight className="size-4" />

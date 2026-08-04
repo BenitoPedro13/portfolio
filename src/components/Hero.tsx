@@ -1,5 +1,3 @@
-// import { Stars } from "@react-three/drei";
-// import { Canvas } from "@react-three/fiber";
 "use client";
 
 import React, { useEffect, useRef } from "react";
@@ -13,10 +11,10 @@ import {
 import { StarsBackground } from "./animate-ui/components/backgrounds/stars";
 import { cn } from "@/utils/cn";
 import ShinyText from "./ShinyText";
-import TextPressure from "./TextPressure";
 import VariableProximity from "./VariableProximity";
 
-const COLORS_TOP = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"];
+// Brand-consistent aurora palette centered on orange
+const COLORS_TOP = ["#F97316", "#FB923C", "#EA580C", "#C2410C"];
 
 export const AuroraHero = () => {
   const color = useMotionValue(COLORS_TOP[0]);
@@ -32,24 +30,19 @@ export const AuroraHero = () => {
 
   const containerRef = useRef(null);
 
-  const backgroundImage = useMotionTemplate`radial-gradient(125% 125% at 50% 0%, #020617 50%, ${color})`;
+  const backgroundImage = useMotionTemplate`radial-gradient(125% 125% at 50% 0%, #050505 50%, ${color})`;
   const border = useMotionTemplate`1px solid ${color}`;
   const boxShadow = useMotionTemplate`0px 4px 24px ${color}`;
 
   return (
     <motion.section
-      style={{
-        backgroundImage,
-      }}
-      className="relative grid min-h-screen place-content-center overflow-hidden bg-gray-950 px-4 py-24 text-gray-200"
+      id="hero"
+      style={{ backgroundImage }}
+      className="relative grid min-h-screen place-content-center overflow-hidden bg-[#050505] px-4 py-24 text-gray-200"
     >
       <div className="relative z-10 flex flex-col items-center text-center">
         <motion.div
-          //   style={{
-          //     border,
-          //     boxShadow,
-          //   }}
-          className="mb-1.5 rounded-full border border-[#ffffff0b] bg-[#ffffff0d] backdrop-blur-md px-3 py-1.5 text-sm inline-flex gap-1"
+          className="mb-1.5 rounded-full border border-[#F97316]/20 bg-[#F97316]/10 backdrop-blur-md px-3 py-1.5 text-sm inline-flex gap-1"
         >
           <ShinyText
             text="End-to-End Product Engineering"
@@ -75,26 +68,19 @@ export const AuroraHero = () => {
             />
           </div>
         </h1>
-        <p className="my-6 max-w-xl text-base leading-relaxed text-gray-200/90 md:text-lg md:leading-relaxed">
+        <p className="my-6 max-w-xl text-base leading-relaxed text-gray-200/70 md:text-lg md:leading-relaxed">
           I&apos;ve spent the last 5 years leading React/Next.js platforms, API
           ecosystems, and cloud infrastructure that blend pixel-perfect UX with
           measurable business outcomes.
         </p>
         <motion.a
-          style={{
-            border,
-            boxShadow,
-          }}
-          href="#work"
-          whileHover={{
-            scale: 1.015,
-          }}
-          whileTap={{
-            scale: 0.985,
-          }}
-          className="group relative flex w-fit items-center gap-1.5 rounded-full bg-gray-950/10 px-4 py-2 text-gray-50 transition-colors hover:bg-gray-950/50"
+          style={{ border, boxShadow }}
+          href="#projects"
+          whileHover={{ scale: 1.015 }}
+          whileTap={{ scale: 0.985 }}
+          className="group relative flex w-fit items-center gap-1.5 rounded-full bg-[#F97316]/10 px-4 py-2 text-gray-50 transition-colors hover:bg-[#F97316]/20"
         >
-          Ver projetos
+          View projects
           <ArrowRight className="transition-transform group-hover:-rotate-45 group-active:-rotate-12" />
         </motion.a>
       </div>
@@ -103,7 +89,7 @@ export const AuroraHero = () => {
         starColor="#fff"
         className={cn(
           "absolute inset-0 flex items-center justify-center rounded-xl",
-          "bg-[radial-gradient(ellipse_at_bottom,_#262626_0%,_#000_100%)]"
+          "bg-[radial-gradient(ellipse_at_bottom,_#1a0a00_0%,_#050505_100%)]"
         )}
       />
     </motion.section>

@@ -49,6 +49,17 @@
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
+@keyframes shine {
+  0% { background-position: 100%; }
+  100% { background-position: -100%; }
+}
+
+@layer utilities {
+  .animate-shine {
+    animation: shine var(--shine-duration, 5s) linear infinite;
+  }
+}
+
 @theme {
   /* AlignUI Raw Colors */
   --color-gray-950: #171717;

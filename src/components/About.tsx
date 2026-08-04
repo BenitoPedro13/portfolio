@@ -51,7 +51,7 @@ export function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <span className="mb-4 inline-block rounded-full border border-[#ffffff0b] bg-[#ffffff0d] px-3 py-1 text-xs uppercase tracking-widest text-white/50">
+              <span className="mb-4 inline-block rounded-full border border-[#F97316]/20 bg-[#F97316]/10 px-3 py-1 text-xs uppercase tracking-widest text-[#F97316]/80">
                 Experience
               </span>
               <h2 className="mb-10 text-4xl font-medium text-white">
@@ -59,7 +59,7 @@ export function About() {
               </h2>
             </motion.div>
 
-            <div className="relative space-y-8 border-l border-[#ffffff10] pl-8">
+            <div className="relative space-y-8 border-l border-[#F97316]/15 pl-8">
               {experience.map((e, i) => (
                 <motion.div
                   key={e.company}
@@ -69,8 +69,9 @@ export function About() {
                   transition={{ delay: i * 0.15, duration: 0.5 }}
                   className="relative"
                 >
-                  <div className="absolute -left-[2.25rem] top-1.5 h-3 w-3 rounded-full border border-[#ffffff30] bg-[#050505]" />
-                  <span className="text-xs text-white/30 uppercase tracking-widest">
+                  {/* orange timeline dot */}
+                  <div className="absolute -left-[2.25rem] top-1.5 h-3 w-3 rounded-full border border-[#F97316]/50 bg-[#F97316]/20" />
+                  <span className="text-xs text-[#F97316]/60 uppercase tracking-widest">
                     {e.period}
                   </span>
                   <h3 className="mt-1 text-base font-semibold text-white">
@@ -95,7 +96,7 @@ export function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <span className="mb-4 inline-block rounded-full border border-[#ffffff0b] bg-[#ffffff0d] px-3 py-1 text-xs uppercase tracking-widest text-white/50">
+              <span className="mb-4 inline-block rounded-full border border-[#F97316]/20 bg-[#F97316]/10 px-3 py-1 text-xs uppercase tracking-widest text-[#F97316]/80">
                 Stack
               </span>
               <h2 className="mb-10 text-4xl font-medium text-white">
@@ -117,12 +118,12 @@ export function About() {
                     hidden: { opacity: 0, scale: 0.9 },
                     show: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
                   }}
-                  className="group flex flex-col items-center gap-2 rounded-xl border border-[#ffffff0b] bg-[#ffffff04] p-4 text-center transition hover:border-[#ffffff18] hover:bg-[#ffffff08]"
+                  className="group flex flex-col items-center gap-2 rounded-xl border border-[#ffffff0b] bg-[#ffffff04] p-4 text-center transition hover:border-[#F97316]/30 hover:bg-[#F97316]/5"
                 >
                   <span className="text-xl" style={{ color: s.color }}>
                     {s.icon}
                   </span>
-                  <span className="text-xs text-white/50 group-hover:text-white/80 transition">
+                  <span className="text-xs text-white/40 group-hover:text-white/80 transition">
                     {s.name}
                   </span>
                 </motion.div>
