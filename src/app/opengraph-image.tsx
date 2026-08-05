@@ -116,7 +116,7 @@ export default async function OpengraphImage() {
             fontSize: 24,
           }}
         >
-          <div style={{ display: "flex" }}>benitopedro.dev</div>
+          <div style={{ display: "flex" }}>{siteHost}</div>
           <div style={{ display: "flex" }}>
             {profile.yearsExperience}+ years building for the web
           </div>

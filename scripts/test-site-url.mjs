@@ -4,6 +4,8 @@
  * since the module caches its result at import time.
  */
 import { execFileSync } from "node:child_process";
+import { readdirSync, readFileSync } from "node:fs";
+import { join } from "node:path";
 
 const RESOLVER = new URL("./site-url-probe.mjs", import.meta.url).pathname;
 
@@ -135,9 +137,43 @@ for (const testCase of cases) {
   }
 }
 
+// Regression guard: the domain must never be hardcoded outside the resolver,
+// otherwise a Vercel deploy would silently advertise the wrong host.
+const SRC = new URL("../src", import.meta.url).pathname;
+const RESOLVER_SRC = `${SRC}/lib/site-url.ts`;
+
+function walk(dir, out = []) {
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    const full = join(dir, entry.name);
+    if (entry.isDirectory()) walk(full, out);
+    else if (/\.(tsx?|jsx?)$/.test(entry.name)) out.push(full);
+  }
+  return out;
+}
+
+// Any literal mention of the personal domain or a *.vercel.app host outside the
+// resolver means the value is no longer driven by the environment.
+const HARDCODED = /benitopedro\.dev|[a-z0-9-]+\.vercel\.app/i;
+
+const offenders = walk(SRC).filter(
+  (file) =>
+    file !== RESOLVER_SRC && HARDCODED.test(readFileSync(file, "utf8"))
+);
+
+if (offenders.length) {
+  failures++;
+  console.log("FAIL  no hardcoded site domain in src/");
+  for (const file of offenders) {
+    console.log(`        ${file.replace(SRC, "src")}`);
+  }
+} else {
+  console.log("ok    no hardcoded site domain in src/");
+}
+
+const total = cases.length + 1;
 console.log(
   failures === 0
-    ? `\nAll ${cases.length} site-url cases pass`
-    : `\n${failures}/${cases.length} FAILED`
+    ? `\nAll ${total} site-url cases pass`
+    : `\n${failures}/${total} FAILED`
 );
 process.exit(failures === 0 ? 0 : 1);
