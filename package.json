@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "test": "node scripts/test-site-url.mjs",
+    "test": "node scripts/test-site-url.mjs && node scripts/test-preloader-timing.mjs",
     "verify:routes": "node scripts/verify-routes.mjs"
   },
   "dependencies": {

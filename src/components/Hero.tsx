@@ -17,6 +17,7 @@ import ShinyText from "./ShinyText";
 import VariableProximity from "./VariableProximity";
 import { profile } from "@/content/profile";
 import { Magnetic } from "./motion/SpotlightCard";
+import { useIntroDone } from "./IntroContext";
 
 const COLORS_TOP = ["#F97316", "#FB923C", "#EA580C", "#C2410C"];
 
@@ -28,6 +29,7 @@ const stats = [
 ];
 
 export const AuroraHero = () => {
+  const introDone = useIntroDone();
   const color = useMotionValue(COLORS_TOP[0]);
   const containerRef = React.useRef<HTMLDivElement>(null);
   const sectionRef = React.useRef<HTMLElement>(null);
@@ -67,7 +69,7 @@ export const AuroraHero = () => {
         {/* availability + location strip */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={introDone ? { opacity: 1, y: 0 } : undefined}
           transition={{ duration: 0.6 }}
           className="mb-6 flex flex-wrap items-center justify-center gap-3"
         >
@@ -86,7 +88,7 @@ export const AuroraHero = () => {
 
         <motion.div
           initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={introDone ? { opacity: 1, y: 0 } : undefined}
           transition={{ duration: 0.6, delay: 0.08 }}
           className="mb-4 inline-flex gap-1 rounded-full border border-[#F97316]/20 bg-[#F97316]/10 px-3 py-1.5 text-sm backdrop-blur-md"
         >
@@ -117,7 +119,7 @@ export const AuroraHero = () => {
 
         <motion.p
           initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={introDone ? { opacity: 1, y: 0 } : undefined}
           transition={{ duration: 0.7, delay: 0.25 }}
           className="my-7 max-w-2xl text-base leading-relaxed text-gray-200/60 md:text-lg md:leading-relaxed"
         >
@@ -128,7 +130,7 @@ export const AuroraHero = () => {
 
         <motion.div
           initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={introDone ? { opacity: 1, y: 0 } : undefined}
           transition={{ duration: 0.7, delay: 0.35 }}
           className="flex flex-wrap items-center justify-center gap-3"
         >
@@ -159,7 +161,7 @@ export const AuroraHero = () => {
         {/* stat rail */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={introDone ? { opacity: 1, y: 0 } : undefined}
           transition={{ duration: 0.8, delay: 0.5 }}
           className="mt-14 grid w-full max-w-2xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.03] backdrop-blur-md sm:grid-cols-4"
         >
@@ -180,8 +182,8 @@ export const AuroraHero = () => {
       {/* scroll cue */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
+        animate={introDone ? { opacity: 1 } : undefined}
+        transition={{ delay: 0.9 }}
         style={{ opacity: contentOpacity }}
         className="absolute inset-x-0 bottom-8 z-10 flex flex-col items-center gap-2"
       >

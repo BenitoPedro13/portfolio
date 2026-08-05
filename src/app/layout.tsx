@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/alignui/toast";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { GrainOverlay } from "@/components/motion/Backdrop";
+import Preloader from "@/components/Preloader";
 import { profile } from "@/content/profile";
 import { siteUrl } from "@/lib/site-url";
 
@@ -104,10 +105,21 @@ export default function RootLayout({
       <body
         className={`${plusJakarta.className} relative min-h-screen bg-[#050505] text-white selection:bg-[#F97316] selection:text-[#0a0503]`}
       >
+        <noscript>
+          {/* Without JS the preloader can never exit and framer-motion's
+              serialized initial styles never resolve, so reveal both here. */}
+          <style
+            dangerouslySetInnerHTML={{
+              __html:
+                ".preloader{display:none!important}#hero [style*='opacity:0']{opacity:1!important;transform:none!important}",
+            }}
+          />
+        </noscript>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
+        <Preloader />
         <GrainOverlay />
         <SiteHeader />
         <main className="relative">{children}</main>
