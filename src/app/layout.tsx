@@ -7,6 +7,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { GrainOverlay } from "@/components/motion/Backdrop";
 import { profile } from "@/content/profile";
+import { siteUrl } from "@/lib/site-url";
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -25,8 +26,6 @@ const jetbrains = JetBrains_Mono({
   weight: ["400", "500"],
   variable: "--font-mono",
 });
-
-const siteUrl = "https://benitopedro.dev";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

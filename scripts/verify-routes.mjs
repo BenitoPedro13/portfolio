@@ -1,4 +1,5 @@
-const BASE = "http://localhost:3111";
+const BASE =
+  process.env.BASE_URL ?? `http://localhost:${process.env.PORT ?? 3000}`;
 
 const checks = [
   {
@@ -53,7 +54,7 @@ const checks = [
     path: "/contact",
     must: ["benitopedro21@outlook.com", "Rio de Janeiro"],
   },
-  { path: "/sitemap.xml", must: ["benitopedro.dev/projects/markado"] },
+  { path: "/sitemap.xml", must: ["/projects/markado", "/about", "/contact"] },
   { path: "/robots.txt", must: ["Sitemap"] },
   { path: "/Resume_Benito_Pedro_Xavier_2026_EN.pdf", must: [], binary: true },
 ];

@@ -9,7 +9,6 @@ export const profile = {
   email: "benitopedro21@outlook.com",
   phone: "+55 (21) 9 8384-9852",
   phoneHref: "+5521983849852",
-  siteUrl: "https://benitopedro.dev",
   github: "https://github.com/BenitoPedro13",
   linkedin: "https://linkedin.com/in/benitopedro13",
   booking: "https://app.markado.co/benito/half-hour-meeting",
