@@ -3,7 +3,6 @@ import {
   MapPin,
   GraduationCap,
   Languages,
-  Sparkles,
   FileText,
   Calendar,
 } from "lucide-react";

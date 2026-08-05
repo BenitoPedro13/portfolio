@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { StarsBackground } from "@/components/animate-ui/components/backgrounds/stars";
 import { AuroraBackdrop } from "@/components/motion/Backdrop";

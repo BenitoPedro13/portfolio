@@ -78,6 +78,25 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: profile.name,
+    url: siteUrl,
+    image: `${siteUrl}/opengraph-image`,
+    jobTitle: profile.role,
+    email: `mailto:${profile.email}`,
+    telephone: profile.phone,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Rio de Janeiro",
+      addressCountry: "BR",
+    },
+    sameAs: [profile.github, profile.linkedin],
+    knowsLanguage: profile.languages.map((language) => language.name),
+    description: profile.intro,
+  };
+
   return (
     <html
       lang="en"
@@ -86,6 +105,10 @@ export default function RootLayout({
       <body
         className={`${plusJakarta.className} relative min-h-screen bg-[#050505] text-white selection:bg-[#F97316] selection:text-[#0a0503]`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
         <GrainOverlay />
         <SiteHeader />
         <main className="relative">{children}</main>
