@@ -223,6 +223,13 @@ export const projects: Project[] = [
     tags: ["Scheduling", "Payments", "SaaS", "Google APIs"],
     github: "https://github.com/BenitoPedro13/markado",
     live: "https://app.markado.co",
+    image: "/projects/markado/agendamentos.png",
+    screenshots: [
+      { src: "/projects/markado/agendamentos.png", alt: "Markado appointments dashboard" },
+      { src: "/projects/markado/disponibilidade.png", alt: "Markado weekly availability editor" },
+      { src: "/projects/markado/booking-page.png", alt: "Markado public booking page as seen by a client" },
+      { src: "/projects/markado/servicos.png", alt: "Markado booking form question editor" },
+    ],
     quickFacts: [
       { label: "Type", value: "SaaS product" },
       { label: "Integrations", value: "Google Calendar, Meet, Stripe" },
