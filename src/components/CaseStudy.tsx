@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useSpring } from "framer-motion";
 import {
@@ -15,8 +16,10 @@ import {
   AlertTriangle,
   Sparkles,
   GraduationCap,
+  GalleryHorizontalEnd,
 } from "lucide-react";
 import type { Project } from "@/content/projects";
+import { cn } from "@/utils/cn";
 import { AuroraBackdrop, GridPattern, GlowOrb } from "./motion/Backdrop";
 import { StarsBackground } from "./animate-ui/components/backgrounds/stars";
 import { WordReveal, Reveal, StaggerGroup, StaggerItem } from "./motion/Reveal";
@@ -220,6 +223,58 @@ export function CaseStudy({
           </div>
         </div>
       </section>
+
+      {/* ── Screenshot gallery ─────────────────────────────── */}
+      {project.screenshots && project.screenshots.length > 0 && (
+        <section className="relative px-6 pb-16 md:pb-24">
+          <div className="mx-auto max-w-5xl">
+            <div className="mb-6 flex items-center gap-3">
+              <span
+                className="flex size-9 items-center justify-center rounded-lg border"
+                style={{
+                  borderColor: `${accent}33`,
+                  backgroundColor: `${accent}14`,
+                  color: accent,
+                }}
+              >
+                <GalleryHorizontalEnd className="size-4" />
+              </span>
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-white/25">
+                  Design
+                </p>
+                <h2 className="text-xl font-semibold text-white md:text-2xl">
+                  Product tour
+                </h2>
+              </div>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {project.screenshots.map((shot, i) => (
+                <motion.div
+                  key={shot.src}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.5, delay: i * 0.06 }}
+                  className={cn(
+                    "relative overflow-hidden rounded-2xl border border-white/[0.08]",
+                    i === 0 && "sm:col-span-2"
+                  )}
+                >
+                  <Image
+                    src={shot.src}
+                    alt={shot.alt}
+                    width={1440}
+                    height={900}
+                    sizes="(min-width: 640px) 50vw, 100vw"
+                    className="h-auto w-full object-cover"
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── Article ────────────────────────────────────────── */}
       <div ref={articleRef} className="relative">

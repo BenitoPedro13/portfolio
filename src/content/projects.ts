@@ -33,6 +33,10 @@ export type Project = {
   tags: string[];
   github: string | null;
   live: string | null;
+  /** Card thumbnail, exported from the Figma design file. Falls back to the generated visual when absent. */
+  image?: string;
+  /** Detail-page screenshot gallery, exported from the Figma design file. */
+  screenshots?: { src: string; alt: string }[];
   /** Short list surfaced on cards. */
   quickFacts: { label: string; value: string }[];
   problem: string;
@@ -775,6 +779,14 @@ export const projects: Project[] = [
     tags: ["Analytics", "Dashboards", "Monorepo", "Social APIs"],
     github: "https://github.com/BenitoPedro13/bee-dash-monorepo",
     live: null,
+    image: "/projects/bee-dash/home.png",
+    screenshots: [
+      { src: "/projects/bee-dash/home.png", alt: "Bee Dash home dashboard with campaign and creator stats" },
+      { src: "/projects/bee-dash/campanhas.png", alt: "Bee Dash campaigns list view" },
+      { src: "/projects/bee-dash/creators.png", alt: "Bee Dash creators grid and performance table" },
+      { src: "/projects/bee-dash/login.png", alt: "Bee Dash login screen" },
+      { src: "/projects/bee-dash/loading.png", alt: "Bee Dash loading screen" },
+    ],
     quickFacts: [
       { label: "Structure", value: "pnpm monorepo" },
       { label: "Apps", value: "API + dashboard + admin" },
