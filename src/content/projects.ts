@@ -79,6 +79,17 @@ export const projects: Project[] = [
     tags: ["Media Pipeline", "WebGPU", "Non-Destructive Editing", "Polyglot Monorepo"],
     github: "https://github.com/BenitoPedro13/plexus",
     live: "https://plexus.up.railway.app",
+    image: "/projects/plexus/editor-with-image.png",
+    screenshots: [
+      { src: "/projects/plexus/home.png", alt: "Plexus home screen — drop a file or pick photo, video, or audio" },
+      { src: "/projects/plexus/quick-actions.png", alt: "Plexus quick actions menu for photo, video, and audio" },
+      { src: "/projects/plexus/photo-actions.png", alt: "Plexus quick actions for photo: edit, convert, compress" },
+      { src: "/projects/plexus/video-actions.png", alt: "Plexus quick actions for video: shrink, convert, extract audio" },
+      { src: "/projects/plexus/audio-actions.png", alt: "Plexus quick actions for audio: convert to MP3, WAV, or AAC" },
+      { src: "/projects/plexus/editor-empty.png", alt: "Plexus non-destructive photo editor before an image is loaded" },
+      { src: "/projects/plexus/editor-with-image.png", alt: "Plexus photo editor with an image loaded, WebGPU live preview" },
+      { src: "/projects/plexus/jobs.png", alt: "Plexus jobs page showing processing and completed batch jobs" },
+    ],
     quickFacts: [
       { label: "Architecture", value: "Go workers + NestJS orchestrator" },
       { label: "Live preview", value: "WebGPU, zero server round-trips" },
