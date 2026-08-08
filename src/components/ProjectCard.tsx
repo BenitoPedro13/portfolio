@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Github, ExternalLink } from "lucide-react";
@@ -107,6 +108,33 @@ function ProjectVisual({ project }: { project: Project }) {
   );
 }
 
+/** Real design screenshot for the card, when the project has one exported from Figma. */
+function ProjectThumbnail({ project }: { project: Project }) {
+  return (
+    <div className="relative h-40 overflow-hidden rounded-xl border border-white/[0.06] bg-[#0a0a0a]">
+      <Image
+        src={project.image!}
+        alt={`${project.title} interface preview`}
+        fill
+        sizes="(min-width: 768px) 42vw, 100vw"
+        className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+      />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between p-4">
+        <span
+          className="font-mono text-[10px] uppercase tracking-[0.2em]"
+          style={{ color: `${project.accent}cc` }}
+        >
+          {project.category}
+        </span>
+        <span className="font-mono text-[10px] text-white/50">
+          {project.year}
+        </span>
+      </div>
+    </div>
+  );
+}
+
 export function ProjectCard({
   project,
   index = 0,
@@ -130,7 +158,11 @@ export function ProjectCard({
           )}
         >
           <div className={cn(variant === "wide" && "md:w-[42%] md:shrink-0")}>
-            <ProjectVisual project={project} />
+            {project.image ? (
+              <ProjectThumbnail project={project} />
+            ) : (
+              <ProjectVisual project={project} />
+            )}
           </div>
 
           <div className="flex flex-1 flex-col">

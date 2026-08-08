@@ -33,6 +33,10 @@ export type Project = {
   tags: string[];
   github: string | null;
   live: string | null;
+  /** Card thumbnail, exported from the Figma design file. Falls back to the generated visual when absent. */
+  image?: string;
+  /** Detail-page screenshot gallery, exported from the Figma design file. */
+  screenshots?: { src: string; alt: string }[];
   /** Short list surfaced on cards. */
   quickFacts: { label: string; value: string }[];
   problem: string;
@@ -75,6 +79,17 @@ export const projects: Project[] = [
     tags: ["Media Pipeline", "WebGPU", "Non-Destructive Editing", "Polyglot Monorepo"],
     github: "https://github.com/BenitoPedro13/plexus",
     live: "https://plexus.up.railway.app",
+    image: "/projects/plexus/editor-with-image.png",
+    screenshots: [
+      { src: "/projects/plexus/home.png", alt: "Plexus home screen — drop a file or pick photo, video, or audio" },
+      { src: "/projects/plexus/quick-actions.png", alt: "Plexus quick actions menu for photo, video, and audio" },
+      { src: "/projects/plexus/photo-actions.png", alt: "Plexus quick actions for photo: edit, convert, compress" },
+      { src: "/projects/plexus/video-actions.png", alt: "Plexus quick actions for video: shrink, convert, extract audio" },
+      { src: "/projects/plexus/audio-actions.png", alt: "Plexus quick actions for audio: convert to MP3, WAV, or AAC" },
+      { src: "/projects/plexus/editor-empty.png", alt: "Plexus non-destructive photo editor before an image is loaded" },
+      { src: "/projects/plexus/editor-with-image.png", alt: "Plexus photo editor with an image loaded, WebGPU live preview" },
+      { src: "/projects/plexus/jobs.png", alt: "Plexus jobs page showing processing and completed batch jobs" },
+    ],
     quickFacts: [
       { label: "Architecture", value: "Go workers + NestJS orchestrator" },
       { label: "Live preview", value: "WebGPU, zero server round-trips" },
@@ -219,6 +234,13 @@ export const projects: Project[] = [
     tags: ["Scheduling", "Payments", "SaaS", "Google APIs"],
     github: "https://github.com/BenitoPedro13/markado",
     live: "https://app.markado.co",
+    image: "/projects/markado/agendamentos.png",
+    screenshots: [
+      { src: "/projects/markado/agendamentos.png", alt: "Markado appointments dashboard" },
+      { src: "/projects/markado/disponibilidade.png", alt: "Markado weekly availability editor" },
+      { src: "/projects/markado/booking-page.png", alt: "Markado public booking page as seen by a client" },
+      { src: "/projects/markado/servicos.png", alt: "Markado booking form question editor" },
+    ],
     quickFacts: [
       { label: "Type", value: "SaaS product" },
       { label: "Integrations", value: "Google Calendar, Meet, Stripe" },
@@ -641,6 +663,13 @@ export const projects: Project[] = [
     tags: ["Headless Commerce", "Shopify", "Remix", "GraphQL"],
     github: "https://github.com/BenitoPedro13/sua-mesa-fit",
     live: null,
+    image: "/projects/sua-mesa-fit/product-hero.png",
+    screenshots: [
+      { src: "/projects/sua-mesa-fit/product.png", alt: "Sua Mesa Fit product customization page" },
+      { src: "/projects/sua-mesa-fit/about.png", alt: "Sua Mesa Fit about page with team and brand story" },
+      { src: "/projects/sua-mesa-fit/blog.png", alt: "Sua Mesa Fit blog listing page" },
+      { src: "/projects/sua-mesa-fit/parcerias.png", alt: "Sua Mesa Fit partner signup page" },
+    ],
     quickFacts: [
       { label: "Model", value: "Headless commerce" },
       { label: "Framework", value: "Hydrogen (Remix)" },
@@ -775,6 +804,14 @@ export const projects: Project[] = [
     tags: ["Analytics", "Dashboards", "Monorepo", "Social APIs"],
     github: "https://github.com/BenitoPedro13/bee-dash-monorepo",
     live: null,
+    image: "/projects/bee-dash/home.png",
+    screenshots: [
+      { src: "/projects/bee-dash/home.png", alt: "Bee Dash home dashboard with campaign and creator stats" },
+      { src: "/projects/bee-dash/campanhas.png", alt: "Bee Dash campaigns list view" },
+      { src: "/projects/bee-dash/creators.png", alt: "Bee Dash creators grid and performance table" },
+      { src: "/projects/bee-dash/login.png", alt: "Bee Dash login screen" },
+      { src: "/projects/bee-dash/loading.png", alt: "Bee Dash loading screen" },
+    ],
     quickFacts: [
       { label: "Structure", value: "pnpm monorepo" },
       { label: "Apps", value: "API + dashboard + admin" },
@@ -906,6 +943,10 @@ export const projects: Project[] = [
     tags: ["Design Tooling", "APIs", "Automation"],
     github: "https://github.com/BenitoPedro13/insta2figma",
     live: null,
+    image: "/projects/insta2figma/plugin-ui.png",
+    screenshots: [
+      { src: "/projects/insta2figma/plugin-ui.png", alt: "Insta2Figma Figma plugin panel importing an Instagram account's posts" },
+    ],
     quickFacts: [
       { label: "Type", value: "Design automation" },
       { label: "Output", value: "Editable Figma layers" },
