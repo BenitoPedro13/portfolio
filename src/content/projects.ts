@@ -49,6 +49,150 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "plexus",
+    title: "Plexus",
+    tagline: "Extensible media processing engine with a non-destructive, WebGPU photo editor on top",
+    plainEnglish:
+      "A batch media pipeline system — like a personal Cloudinary — where the exact same 'recipe' you build by hand editing one photo runs unmodified across hundreds of files, with live progress and an editor that feels like Apple Photos.",
+    year: "2026",
+    status: "Live",
+    category: "Platform",
+    featured: true,
+    accent: "#C2410C",
+    role: "Solo architect and developer",
+    timeline: "Ongoing",
+    team: "Solo",
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "NestJS",
+      "Go",
+      "WebGPU",
+      "NATS JetStream",
+      "PostgreSQL",
+      "MinIO",
+    ],
+    tags: ["Media Pipeline", "WebGPU", "Non-Destructive Editing", "Polyglot Monorepo"],
+    github: "https://github.com/BenitoPedro13/plexus",
+    live: "https://plexus.up.railway.app",
+    quickFacts: [
+      { label: "Architecture", value: "Go workers + NestJS orchestrator" },
+      { label: "Live preview", value: "WebGPU, zero server round-trips" },
+      { label: "Queue", value: "NATS JetStream — dispatch + progress" },
+      { label: "Data model", value: "Editor recipe = pipeline definition" },
+    ],
+    problem:
+      "My earlier video-converter project was a fixed pipeline: upload, one transformation, download. There was nothing in my portfolio that behaved like real media infrastructure — a general-purpose, extensible processing engine, closer to what a Cloudinary or a Zapier-for-media actually has to solve. And engineering-first tools like that usually expose their internals — queues, jobs, DAGs — directly in the UI, which makes them feel powerful but unapproachable to an actual end user dragging a slider.",
+    approach:
+      "Plexus is built around one idea: an edit made by hand on a single photo and a batch pipeline definition are the same data structure. Every editor control writes to a small ordered list of `{ processor, params }` steps — a recipe — instead of touching a pixel. That recipe previews live in the browser over WebGPU, and the identical recipe is what a Go worker executes, unmodified, whether it's one image or five hundred. NestJS owns the DAG resolution and job state machine, Go owns the CPU-bound ffmpeg/libvips work, and NATS JetStream is the one piece of infra behind both job dispatch and the real-time progress stream the frontend subscribes to.",
+    outcome:
+      "A working system on Railway where dropping a photo into the editor and dragging Light/Color/Sharpen sliders feels instant with no server round-trip, and clicking 'apply to batch' runs that exact recipe as a real DAG pipeline across a whole folder — with live per-step progress and no worker able to silently lose a job.",
+    sections: [
+      {
+        title: "One data structure, two UIs",
+        body: "The editor and the pipeline engine share a single Zod schema (`packages/recipe`) covering every processor: resize, convert, compress, crop, and the composite Light/Color/B&W/Sharpen controls. The editor's direct-manipulation sliders and the orchestrator's declarative pipeline DAGs both produce and consume the exact same recipe object — there is no 'convert my edit into a pipeline' translation step anywhere in the codebase, because none is needed.",
+      },
+      {
+        title: "Why the preview never touches the server",
+        body: "Dragging a slider has to feel instant, and a server round-trip per adjustment can't hit that latency. So the live preview renders entirely client-side: WebGPU compute/render pipelines apply the current recipe to the original image in the browser, with a WebGL2 fallback for browsers without WebGPU support. The Go backend only gets involved for the final full-resolution export and for batch runs — one execution engine backs both, and the drift between the browser's approximation and the Go ground-truth render is measured against a numeric bound per control, not eyeballed.",
+      },
+      {
+        title: "Go where it's CPU-bound, TypeScript everywhere else",
+        body: "The orchestrator (NestJS) handles auth, DAG resolution, and job state — I/O-bound coordination work where TypeScript's iteration speed wins. The worker pool is Go, because resizing, transcoding, and compressing media is CPU-bound and benefits from real per-worker memory and concurrency control that a Node process doesn't give you cheaply. Neither side blurs into the other: media processing logic doesn't creep into the orchestrator, and job/business logic doesn't creep into the workers.",
+      },
+      {
+        title: "NATS JetStream as one piece of infra, two jobs",
+        body: "Job dispatch and the real-time progress stream both run over NATS JetStream instead of two separate systems — a queue for work, a pub/sub layer for events. JetStream's persistence means a worker killed mid-job doesn't lose the job; another replica picks the message back up, which is the concrete, demonstrated version of 'no lost jobs' rather than an aspiration.",
+      },
+    ],
+    process: [
+      {
+        phase: "01",
+        title: "Core pipeline engine",
+        body: "Orchestrator, one Go worker type, Postgres, and NATS — linear pipelines only, built-in resize/convert/compress/video/audio processors. No editor yet, just proving jobs could be dispatched, run, and tracked reliably.",
+      },
+      {
+        phase: "02",
+        title: "Editor MVP",
+        body: "The non-destructive recipe model, the WebGPU/WebGL2 live preview renderer, and the curated composite sliders (Light, Color, B&W, Sharpen, Crop) with synchronous export — shippable as its own milestone, independent of the batch machinery.",
+      },
+      {
+        phase: "03",
+        title: "Real DAGs, realtime, and Apply to Batch",
+        body: "Presigned MinIO upload, the shared `@plexus/recipe` package, an SSE progress stream off the same NATS events, and branching/parallel DAG resolution — the point where 'edit once, apply to 500 files' became a real button instead of an architectural claim.",
+      },
+      {
+        phase: "04",
+        title: "Plugin system — not started",
+        body: "The gRPC plugin contract that lets a third party add a new processor in any language without touching the core. Deliberately phased last since it's additive to an already-working engine, not a dependency of it.",
+      },
+    ],
+    architecture: [
+      {
+        layer: "Client",
+        label: "Next.js + WebGPU/WebGL2 editor",
+        detail: "Upload, dashboard, live progress, and the in-browser non-destructive preview renderer — no pixel ever leaves the browser during editing, only the recipe.",
+      },
+      {
+        layer: "API",
+        label: "NestJS orchestrator",
+        detail: "Auth, pipeline DAG resolution, and the job state machine (queued → running → partial → complete/failed).",
+      },
+      {
+        layer: "Async",
+        label: "NATS JetStream",
+        detail: "Persistent, replayable event log backing both job dispatch to workers and the SSE progress stream to the browser.",
+      },
+      {
+        layer: "Workers",
+        label: "Go worker pool",
+        detail: "ffmpeg/libvips-backed built-in processors, horizontally scalable, executing the same recipe at full resolution for export and batch runs.",
+      },
+      {
+        layer: "Storage",
+        label: "PostgreSQL + MinIO",
+        detail: "Drizzle-managed jobs/pipelines/recipes/plugin-registry schema in Postgres; presigned-URL upload/download through MinIO so the API never proxies large files.",
+      },
+    ],
+    features: [
+      {
+        title: "Non-destructive recipe editing",
+        body: "Every control — crop, light, color, sharpen — writes recipe parameters, never pixels. Undo/redo is just recipe history.",
+      },
+      {
+        title: "Live WebGPU preview",
+        body: "Slider drags render in-browser with no server round-trip, falling back to WebGL2 where WebGPU isn't available.",
+      },
+      {
+        title: "Apply to Batch",
+        body: "The recipe built by hand on one photo runs, unmodified, as a pipeline across an entire folder of files.",
+      },
+      {
+        title: "Real-time job progress",
+        body: "Per-step SSE progress driven off the same NATS event stream used for dispatch, not a separate polling loop.",
+      },
+    ],
+    challenges: [
+      {
+        title: "Preview/export fidelity drift",
+        body: "The browser's WebGPU approximation and the Go server's ground-truth render must agree closely enough that a user never sees a surprise on export. Drift per composite control is measured numerically against a bound and enforced by a test, not checked by eye.",
+      },
+      {
+        title: "Crash-safe job dispatch",
+        body: "A worker killed mid-job must not silently drop it. JetStream's persistence plus explicit ack/heartbeat handling means another replica picks the message back up instead of the job vanishing.",
+      },
+      {
+        title: "Keeping the language boundary a contract",
+        body: "With Go and TypeScript on either side of gRPC, NATS subjects, and a shared Postgres schema, it's easy for the boundary to dissolve into ad-hoc JSON shapes duplicated by hand. The recipe schema has exactly one canonical definition, and everything else imports or generates from it.",
+      },
+    ],
+    learnings: [
+      "Structural unification — making two features literally the same data structure — beats a translation layer between them every time.",
+      "A live preview that lies to the user by even a little is worse than a slower, honest one; fidelity drift needs a measured bound, not a vibe check.",
+      "A persistent, replayable event log doubling as both queue and pub/sub is one less piece of infrastructure to keep consistent.",
+    ],
+  },
+  {
     slug: "markado",
     title: "Markado",
     tagline: "Service scheduling platform with real calendar and payments",
