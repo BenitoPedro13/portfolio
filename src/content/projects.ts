@@ -652,6 +652,13 @@ export const projects: Project[] = [
     tags: ["Headless Commerce", "Shopify", "Remix", "GraphQL"],
     github: "https://github.com/BenitoPedro13/sua-mesa-fit",
     live: null,
+    image: "/projects/sua-mesa-fit/product-hero.png",
+    screenshots: [
+      { src: "/projects/sua-mesa-fit/product.png", alt: "Sua Mesa Fit product customization page" },
+      { src: "/projects/sua-mesa-fit/about.png", alt: "Sua Mesa Fit about page with team and brand story" },
+      { src: "/projects/sua-mesa-fit/blog.png", alt: "Sua Mesa Fit blog listing page" },
+      { src: "/projects/sua-mesa-fit/parcerias.png", alt: "Sua Mesa Fit partner signup page" },
+    ],
     quickFacts: [
       { label: "Model", value: "Headless commerce" },
       { label: "Framework", value: "Hydrogen (Remix)" },
@@ -925,6 +932,10 @@ export const projects: Project[] = [
     tags: ["Design Tooling", "APIs", "Automation"],
     github: "https://github.com/BenitoPedro13/insta2figma",
     live: null,
+    image: "/projects/insta2figma/plugin-ui.png",
+    screenshots: [
+      { src: "/projects/insta2figma/plugin-ui.png", alt: "Insta2Figma Figma plugin panel importing an Instagram account's posts" },
+    ],
     quickFacts: [
       { label: "Type", value: "Design automation" },
       { label: "Output", value: "Editable Figma layers" },
