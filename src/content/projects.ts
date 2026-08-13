@@ -371,7 +371,7 @@ export const projects: Project[] = [
     plainEnglish:
       "A booking website where a professional shares one link, clients pick a free time slot, and the meeting plus the payment are handled automatically.",
     year: "2025",
-    status: "Live",
+    status: "Case study",
     category: "Product",
     featured: true,
     accent: "#F97316",
@@ -390,7 +390,7 @@ export const projects: Project[] = [
     ],
     tags: ["Scheduling", "Payments", "SaaS", "Google APIs"],
     github: "https://github.com/BenitoPedro13/markado",
-    live: "https://app.markado.co",
+    live: null,
     image: "/projects/markado/agendamentos.png",
     screenshots: [
       { src: "/projects/markado/agendamentos.png", alt: "Markado appointments dashboard" },
@@ -960,7 +960,7 @@ export const projects: Project[] = [
     ],
     tags: ["Analytics", "Dashboards", "Monorepo", "Social APIs"],
     github: "https://github.com/BenitoPedro13/bee-dash-monorepo",
-    live: null,
+    live: "https://www.thatsbee.co",
     image: "/projects/bee-dash/home.png",
     screenshots: [
       { src: "/projects/bee-dash/home.png", alt: "Bee Dash home dashboard with campaign and creator stats" },
