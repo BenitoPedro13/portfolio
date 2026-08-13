@@ -53,6 +53,163 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "prumo",
+    title: "Prumo",
+    tagline: "MCMV pre-qualification and lead site for a Rio real-estate broker",
+    plainEnglish:
+      "A site that answers 'can I actually afford this?' before showing apartments — a six-question quiz gives a family an honest credit verdict in about a minute, before they ever compare units.",
+    year: "2026",
+    status: "Live",
+    category: "Product",
+    featured: true,
+    accent: "#2e4a3c",
+    role: "Solo full stack developer",
+    timeline: "Ongoing",
+    team: "Solo",
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Payload CMS",
+      "PostgreSQL",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "Vercel Blob",
+    ],
+    tags: ["Real Estate", "MCMV", "Lead Qualification", "Payload CMS"],
+    github: "https://github.com/BenitoPedro13/prumo",
+    live: "https://prumo-drab-three.vercel.app",
+    image: "/projects/prumo/home.png",
+    screenshots: [
+      { src: "/projects/prumo/home.png", alt: "Prumo homepage stating the credit-before-apartment order" },
+      { src: "/projects/prumo/empreendimentos.png", alt: "Prumo catálogo listing Cury launches by neighbourhood" },
+      { src: "/projects/prumo/simulador.png", alt: "Prumo pre-qualification flow with the plumb-rail progress indicator" },
+      { src: "/projects/prumo/proposta.png", alt: "Prumo shared proposal page, a personal letter with frozen commercial numbers" },
+      { src: "/projects/prumo/sobre.png", alt: "Prumo about page introducing the broker" },
+      { src: "/projects/prumo/contato.png", alt: "Prumo contact page with LGPD consent" },
+    ],
+    quickFacts: [
+      { label: "Domain", value: "Minha Casa Minha Vida credit" },
+      { label: "CMS", value: "Payload 3, publication-gated" },
+      { label: "Data", value: "Neon Postgres + Vercel Blob" },
+      { label: "Pre-qualification", value: "Zero persistence, six questions" },
+    ],
+    problem:
+      "The broker doesn't own inventory, set prices, or control delivery — she resells the same Cury Construtora launches, from the same PDFs, as every other broker in Rio. The only real differentiation available is the buyer's experience. And in Minha Casa Minha Vida specifically, the anxiety was never 'which apartment' — it's 'do I actually qualify' — yet almost every listing site in the segment answers the apartment question first and leaves credit for a phone call.",
+    approach:
+      "Prumo puts the credit question first. A six-step pre-qualification flow gives an instant, honest verdict — one of five outcomes, not a binary yes/no — with zero bureau lookups and zero document uploads. Every policy-sensitive number behind it (MCMV income brackets, subsidy rates, the Rio locality ceiling) lives in a CMS global instead of in code, flagged as an illustrative suggestion until the broker confirms it against Caixa's current tables. The proposal she eventually sends a qualified lead freezes its own commercial numbers at the moment it's created and refuses outright to generate if the underlying price table has expired.",
+    outcome:
+      "A deployed product — Neon Postgres via Vercel, currently a private preview — where a visitor gets a real MCMV verdict without typing a CPF or uploading a document, and where a family reading a shared proposal always sees both the installment they'd pay today and the INCC-projected one at handover, because the data model makes it structurally impossible to show only one.",
+    sections: [
+      {
+        title: "Credit before apartment",
+        body: "The whole product is organized around answering 'eu consigo?' before 'qual apartamento?'. The pre-qualification flow's progress indicator is a plumb rail — a simulated rope, not a keyframed animation — because a pendulum's settle time depends on its own length, and the length is exactly what changes as the flow advances. It's the site's one interactive element, and it's a literal physical metaphor for the product's name and thesis rather than a decorative flourish.",
+      },
+      {
+        title: "Numbers as flagged suggestions, not silent defaults",
+        body: "MCMV income brackets, rates, and subsidy bands move by federal portaria — they shifted in March 2026, and the project's own seed data was already stale by the time it was checked. So Parametros stores them in the admin behind a `valores_sugeridos` checkbox rather than as literals in code: every page printing one of those numbers shows a visible 'estimativas ilustrativas' strip while the box is ticked. The flag is the actual publish gate — the broker replaces four fields and unticks one box, no redeploy, no code change.",
+      },
+      {
+        title: "A proposal that can't drift from what was sent",
+        body: "`/p/[token]` is a single-use letter to one lead, not a live view of pricing. Its `beforeValidate` hook copies the commercial numbers out of `CondicaoComercial` into the proposal document itself at creation time, so a later edit to the source table never silently changes a proposal already texted to a family — and the same hook refuses to save at all if any selected price table's validity date has passed. Not a warning; a hard block on the single most expensive mistake available in this product.",
+      },
+      {
+        title: "Zero persistence where persistence isn't earned",
+        body: "The six-question flow never calls a Server Action, fetch, or storage API — answers live in component state for the length of the visit and vanish on close. That's a deliberate LGPD line: `/contato` writes `Lead` and `Consentimento` through a Server Action because filling out a contact form is consent to be reached, but answering questions about your income and debts is not, so nothing about it is stored, logged, or transmitted anywhere.",
+      },
+    ],
+    process: [
+      {
+        phase: "01",
+        title: "Scaffold and legal identity",
+        body: "Next.js + Tailwind v4 + shadcn scaffold with Payload CMS 3 embedded in the same app. The broker's CRECI signature component — name, license number, photo, strict proportion rules — was built before any page that would need it, since it's a legal requirement on every surface rather than a design nicety.",
+      },
+      {
+        phase: "02",
+        title: "Catálogo and the publication gate",
+        body: "Empreendimento/Tipologia/CondicaoComercial collections with Payload's own validation blocking publish until registro and cartório fields are filled — an unfinished legal record can't reach a real visitor by construction, not by editorial discipline.",
+      },
+      {
+        phase: "03",
+        title: "The pre-qualification engine",
+        body: "The MCMV enquadramento arithmetic, the plumb-rail rope simulation, and a five-outcome result screen that returns every blocker at once — someone with a credit restriction and a prior MCMV purchase hears both reasons the first time, instead of fixing one and coming back to a second no.",
+      },
+      {
+        phase: "04",
+        title: "The shared proposal",
+        body: "`/p/[token]`, the freeze-at-creation hook, the expired-table hard gate, and a view-count that logs itself by writing through Payload's Local API during a plain page render — an unusual pattern for this codebase, kept deliberately contained to this one route.",
+      },
+      {
+        phase: "05",
+        title: "First deployment",
+        body: "Neon Postgres via the Vercel Marketplace integration, with Vercel Blob standing in for the originally planned Cloudflare R2 (unreachable through Vercel's Marketplace CLI without a separate Cloudflare account) — both storage adapters stay wired in `payload.config.ts`, so moving to R2 later is an environment variable, not a rewrite.",
+      },
+    ],
+    architecture: [
+      {
+        layer: "Client",
+        label: "Next.js App Router",
+        detail: "Public marketing, catálogo, pre-qualification, and proposal routes, sharing one app with the admin route group.",
+      },
+      {
+        layer: "CMS / Admin",
+        label: "Payload CMS 3, pt-BR",
+        detail: "Publication-gated collections plus a `Parametros` global holding every MCMV number the market can move.",
+      },
+      {
+        layer: "Data",
+        label: "Neon Postgres",
+        detail: "One managed database shared across local dev, Preview, and Production via the Vercel integration.",
+      },
+      {
+        layer: "Media",
+        label: "Vercel Blob",
+        detail: "S3-compatible storage for renders and floor plans, with the R2 adapter kept wired for a later swap.",
+      },
+      {
+        layer: "Messaging",
+        label: "wa.me deep links",
+        detail: "Pre-filled WhatsApp context instead of the WhatsApp Business API, which buys nothing at this volume.",
+      },
+    ],
+    features: [
+      {
+        title: "Five-outcome pre-qualification",
+        body: "Approved in-band, approved in a different faixa, above the faixas, outside the program, or 'not yet' — the last returning every blocker at once rather than one at a time.",
+      },
+      {
+        title: "Plumb-rail progress",
+        body: "A simulated rope whose settle time and lean are physically integrated from the flow's own state — both the progress indicator and the site's only interactive element.",
+      },
+      {
+        title: "Frozen, hard-gated proposals",
+        body: "Commercial numbers copied into the document at creation; generation blocked outright by an expired price table.",
+      },
+      {
+        title: "Flagged, not hardcoded, policy numbers",
+        body: "MCMV faixas, rates, and subsidy bands live in the admin behind a visible confirmation flag, never shipped as literals in code.",
+      },
+    ],
+    challenges: [
+      {
+        title: "Housing policy that moves faster than a codebase",
+        body: "MCMV brackets shifted by portaria mid-project, and the seed table was already stale by the time it was checked. The fix was structural — a confirmation flag plus an admin surface — not a one-time correction.",
+      },
+      {
+        title: "An honest 'not yet'",
+        body: "Designing a fifth outcome that reads as useful rather than as a rejection meant returning a list of every blocker, so a restriction and a prior MCMV purchase are both surfaced the first time.",
+      },
+      {
+        title: "Motion with a real physical constraint",
+        body: "A pendulum's period depends on its length, and the flow's length changes as questions are answered — so the plumb rail had to be an integrated simulation, not a keyframed clip that would visibly desync from its own state.",
+      },
+    ],
+    learnings: [
+      "A hard gate — an expired table blocking generation outright — beats a warning nobody reads, on the one number in the product where the mistake is expensive.",
+      "Flagging an unconfirmed number as a suggestion, rather than leaving it empty, is what actually gets it corrected: the broker can see and fix it instead of it silently gating an entire surface.",
+      "A regulatory boundary (what needs consent, what needs zero persistence) makes a better design constraint than a technical one — it decided the pre-qualification's entire data flow before any state-management code was written.",
+    ],
+  },
+  {
     slug: "plexus",
     title: "Plexus",
     tagline: "Extensible media processing engine with a non-destructive, WebGPU photo editor on top",
