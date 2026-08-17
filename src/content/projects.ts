@@ -1465,7 +1465,10 @@ export const projects: Project[] = [
   },
 ];
 
-export const featuredProjects = projects.filter((p) => p.featured);
+export const featuredProjects = [
+  ...projects.filter((p) => p.featured && p.slug === "art-hur"),
+  ...projects.filter((p) => p.featured && p.slug !== "art-hur"),
+];
 
 export const projectCategories = [
   "All",
