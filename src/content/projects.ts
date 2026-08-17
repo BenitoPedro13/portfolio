@@ -663,7 +663,7 @@ export const projects: Project[] = [
     year: "2024",
     status: "Open source",
     category: "Infrastructure",
-    featured: true,
+    featured: false,
     accent: "#FB923C",
     role: "Solo architect and developer",
     timeline: "3 months",
