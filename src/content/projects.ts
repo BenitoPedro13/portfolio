@@ -53,6 +53,150 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "trision",
+    title: "Trísion Eyewear",
+    tagline: "One catalogue, a showcase for every reseller — brand site and multi-tenant platform for a Brazilian eyewear label",
+    plainEnglish:
+      "A brand's entire web presence used to be a Linklist page and a one-screen Canva site. Now there's a real catalogue, and every independent optical shop that resells the brand gets its own storefront — sharing the same products, never a copy of the brand's own site.",
+    year: "2026",
+    status: "In development",
+    category: "Product",
+    featured: true,
+    accent: "#CCA866",
+    role: "Solo full stack developer",
+    timeline: "Ongoing — Fase 0 of a phased build",
+    team: "Solo",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS v4", "Zustand", "Vercel"],
+    tags: ["Multi-tenant SaaS", "Brand Identity", "Design System", "E-commerce Adjacent"],
+    github: "https://github.com/BenitoPedro13/trision",
+    live: "https://trision.vercel.app",
+    image: "/projects/trision/catalogo.png",
+    screenshots: [
+      { src: "/projects/trision/home.png", alt: "Trísion homepage: the thesis line and the starfield ground" },
+      { src: "/projects/trision/catalogo.png", alt: "Trísion catalogue with format/material/colour filters and real numeração on every card" },
+      { src: "/projects/trision/colecoes.png", alt: "Trísion collections index" },
+      { src: "/projects/trision/produto.png", alt: "Trísion product page showing the honest 'sem foto' empty state instead of a stock photo" },
+      { src: "/projects/trision/revendedores.png", alt: "Trísion reseller directory, filterable by state and city" },
+      { src: "/projects/trision/loja.png", alt: "A reseller's own storefront at /loja/[rev] — the Fase 0 stand-in for a subdomain" },
+    ],
+    quickFacts: [
+      { label: "Model", value: "One catalogue, many storefronts" },
+      { label: "Every path ends in", value: "WhatsApp — no cart, no checkout" },
+      { label: "A reseller controls", value: "Name, city, contact, one photo — never a colour or logo" },
+      { label: "A number on the site", value: "A real mm measurement, or nothing at all" },
+    ],
+    problem:
+      "The client — Amanda, who has run this eyewear label since 2002 — had no real web presence: a Linklist page and a one-screen Canva site. She sells exclusively through independent optical shops, and those resellers had nothing of their own to show a customer. The brand already existed — name, mark, a specific gold sampled from her own material, '24 years' as the one asset nobody else in the category has — the job was never inventing an identity, it was building the platform that could carry it without flattening every reseller into an identical sub-brand.",
+    approach:
+      "The product is built around one sentence that was already in the logo: a frame is a decision about what you look at. A reseller is an endorsement, not a sub-brand — enforced in the data model itself, not just in the copy: no colour field, no logo field, no font field, ever. Every path — brand site or reseller storefront — terminates in a single WhatsApp deep-link builder, because the brand's actual failure mode on a sibling project was shipping a `localhost` link to production after more than one place built that string. The catalogue and tenancy layers are built as typed seams (`lib/catalog/source.*.ts`, `lib/tenant/scope.ts`) against local mock data now, so the CMS arriving in the next phase is a new implementation of an existing interface, not a rewrite. And where a rule says a number must be a real measurement or a photo must be real, the honest failure state — no numeração, 'sem foto' — ships instead of a placeholder that would quietly lie to an optician.",
+    outcome:
+      "A working Fase 0: the homepage, `/colecoes`, `/catalogo`, `/oculos/[slug]`, and a path-routed storefront stand-in at `/loja/[rev]` all render end-to-end against typed mock data, dark-only, with the brand's own gold as the single accent. Every product photo gallery without a real shot renders the honest 'sem foto' state rather than an invented photograph — there is no real product photography yet, so there is no fake product photography either. A 16-slide pitch deck at `/apresentacao` exists specifically to extract the open questions (the apex domain, the pricing model, where a WhatsApp lead should route) that block the next phase, rather than letting the build silently assume answers to them.",
+    sections: [
+      {
+        title: "A reseller is an endorsement, not a sub-brand",
+        body: "The most common failure mode for a 'let resellers have their own page' feature is theming creep: a colour picker, a logo upload, and eighteen months later every storefront looks like a different company wearing the same product photos. Trísion's data model doesn't have those fields at all — a reseller controls its name, city, contact, one photograph, and which frames it carries. The brand's dark background, gold accent, and typography carry through untouched on every `/loja/[rev]` page, because the thing being sold is trust in the brand, not the shop.",
+      },
+      {
+        title: "A number is a real measurement, or it isn't shown",
+        body: "Eyewear has one piece of data an optician actually reads: the `52□18-145` printed inside the temple — eye size, bridge, temple length, all in millimetres. `Numeracao` renders that string from real `produtos.medidas` data, with the `□` drawn as inline SVG rather than substituted with a hyphen or a slash. A product with no measurements renders no numeração at all — never a placeholder value — because a wrong number shown to an optician is a worse failure than a blank field.",
+      },
+      {
+        title: "A seam built for a CMS that doesn't exist yet",
+        body: "Fase 0 deliberately has no database and no Payload CMS — that's Fase 1. But every read of the catalogue and every read of a reseller's scope already goes through one function each (`lib/catalog/source.ts`, `lib/tenant/scope.ts`) typed against the same domain shapes Payload will eventually implement. No component imports mock data directly. The bet is that swapping `source.local.ts` for `source.payload.ts` behind that seam is a normal phase of work instead of a rewrite — the same seam pattern that already paid for itself on an earlier sibling project.",
+      },
+      {
+        title: "Honest empty states instead of invented photography",
+        body: "There is no real Trísion product photography yet. Rather than fill the gap with stock eyewear photos that would read as this brand's actual catalogue, every gallery without a real shot renders a plain 'sem foto' panel. It's a worse-looking page today and a truthful one — the alternative is a client discovering, after showing the site to a customer, that half the 'photos' were never hers.",
+      },
+    ],
+    process: [
+      {
+        phase: "01",
+        title: "Scaffold and the pitch deck",
+        body: "Next.js scaffolded with the design tokens sampled from the client's own material — including the specific gold, `#CCA866`, sampled from her existing lockup rather than a generic 'stock gold'. The first deliverable wasn't a page, it was a 16-slide presentation at `/apresentacao` built to extract the open questions (domain ownership, pricing model, WhatsApp routing) that block later phases, shown to the client on her phone.",
+      },
+      {
+        phase: "02",
+        title: "The brand components",
+        body: "`Visor` (the four corner brackets that frame something real — never decoration on an empty area), `Numeracao` (the SVG-square mm string), `Marca`/`MarcaLockup` (the wordmark, drawn from one shared path source so the header, favicon, and Open Graph card can never drift from each other), and `Ceu` (the starfield canvas, static under reduced motion, off entirely without WebGL) — none of these come from a component library, because they are the brand.",
+      },
+      {
+        phase: "03",
+        title: "Catalogue and tenancy, against typed mock data",
+        body: "The full frontend — home, `/colecoes`, `/catalogo` with URL-driven filters, `/oculos/[slug]`, and the `/loja/[rev]` storefront stand-in — built against `content/`'s typed example data, behind the `lib/catalog/` and `lib/tenant/` seams that Payload will later implement without the pages above them changing.",
+      },
+      {
+        phase: "04",
+        title: "Fase 1 — not started",
+        body: "Payload CMS, Postgres, and Vercel Blob, mounted inside the same app once the client's apex domain and DNS access are confirmed (currently `[VERIFICAR]`) — the wildcard-subdomain storefront routing the whole multi-tenant model depends on can't ship without it.",
+      },
+    ],
+    architecture: [
+      {
+        layer: "Client",
+        label: "Next.js App Router",
+        detail: "Brand routes and the Fase 0 `/loja/[rev]` storefront stand-in sharing one app, dark theme hardcoded, no light-mode toggle.",
+      },
+      {
+        layer: "Catalogue seam",
+        label: "lib/catalog/source.*.ts",
+        detail: "One typed interface over local mock data now; a Payload implementation is a new file behind the same seam, not a rewrite.",
+      },
+      {
+        layer: "Tenancy seam",
+        label: "lib/tenant/scope.ts",
+        detail: "The single place that reads reseller/showcase data — every tenant-scoped read goes through this one function.",
+      },
+      {
+        layer: "Conversion",
+        label: "lib/lead/link.ts",
+        detail: "The one `wa.me` deep-link builder used by every CTA on the site — no second place composes a WhatsApp URL.",
+      },
+      {
+        layer: "Content",
+        label: "content/*.ts",
+        detail: "Typed TypeScript modules standing in for the catalogue and reseller data Payload owns from Fase 1 onward — every entry marked `exemplo`.",
+      },
+    ],
+    features: [
+      {
+        title: "Endorsement-only reseller storefronts",
+        body: "A reseller gets a name, city, contact, and one photo — never a colour, logo, or font — enforced by the data model, not editorial discipline.",
+      },
+      {
+        title: "Honest 'sem foto' empty states",
+        body: "Every product gallery without a real photograph says so plainly instead of substituting a stock image that isn't actually this brand's product.",
+      },
+      {
+        title: "Real numeração or none at all",
+        body: "`52□18-145` renders only from real millimetre data, with the `□` as inline SVG — never a hyphen, slash, or invented value.",
+      },
+      {
+        title: "One WhatsApp builder, everywhere",
+        body: "Every CTA on every route — brand site or reseller storefront — resolves through the same `lib/lead/link.ts` function.",
+      },
+    ],
+    challenges: [
+      {
+        title: "Building the CMS seam before the CMS",
+        body: "Fase 0 has no database by design, but every future Payload collection already has a typed consumer waiting for it. Getting that boundary right without the real implementation to test it against is the highest-risk part of the phasing.",
+      },
+      {
+        title: "Never inventing a fact about her business",
+        body: "No price, measurement, city, or reseller name gets invented — unresolved facts are written inline as `[VERIFICAR: ...]` instead of a plausible placeholder, because a wrong figure shown to Amanda is worse than an honest gap.",
+      },
+      {
+        title: "A brand asset that's still an approximation",
+        body: "The wordmark is currently an approximate redraw pending the original vector file — every surface that renders it (header, favicon, Open Graph image) reads from one shared path source specifically so that when the real vector arrives, it updates everywhere at once.",
+      },
+    ],
+    learnings: [
+      "Enforcing a brand rule ('a reseller is an endorsement, not a sub-brand') in the data model, not just the design system, is what actually keeps it true after the tenth reseller signs up.",
+      "An honest empty state — 'sem foto', no numeração — is a better default than a plausible-looking placeholder, especially on a site a client will show to her own customers.",
+      "Building the pitch deck as its own real deliverable, not a stand-in for the product, was what actually got the phase-blocking business questions answered instead of silently assumed.",
+    ],
+  },
+  {
     slug: "prumo",
     title: "Prumo",
     tagline: "MCMV pre-qualification and lead site for a Rio real-estate broker",
