@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Press_Start_2P, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { NotificationProvider } from "@/components/ui/alignui/notification-provider";
 import { Toaster } from "@/components/ui/alignui/toast";
@@ -126,6 +127,15 @@ export default function RootLayout({
         <SiteFooter />
         <NotificationProvider />
         <Toaster />
+        {process.env.NODE_ENV === "production" &&
+          process.env.NEXT_PUBLIC_UMAMI_SRC &&
+          process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && (
+            <Script
+              src={process.env.NEXT_PUBLIC_UMAMI_SRC}
+              data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
+              strategy="afterInteractive"
+            />
+          )}
       </body>
     </html>
   );
