@@ -136,6 +136,15 @@ export default function RootLayout({
               strategy="afterInteractive"
             />
           )}
+        {process.env.NODE_ENV === "production" &&
+          process.env.NEXT_PUBLIC_UMAMI_RECORDER_SRC &&
+          process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && (
+            <Script
+              src={process.env.NEXT_PUBLIC_UMAMI_RECORDER_SRC}
+              data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
+              strategy="afterInteractive"
+            />
+          )}
       </body>
     </html>
   );
