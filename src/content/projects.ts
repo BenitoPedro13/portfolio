@@ -53,6 +53,272 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "fa-moveis",
+    title: "F&A Móveis",
+    tagline: "A furniture catalogue where every measurement is real, and every sale ends in WhatsApp",
+    plainEnglish:
+      "A furniture shop's whole online catalogue, with real prices and real centimetre measurements on every piece — no cart, just a WhatsApp message pre-filled with the exact product, sent straight to Fátima, the owner.",
+    year: "2026",
+    status: "Live",
+    category: "Product",
+    featured: false,
+    accent: "#A87C7C",
+    role: "Solo full stack developer",
+    timeline: "Ongoing",
+    team: "Solo",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Radix UI", "Vercel"],
+    tags: ["Local Business", "Catalogue", "No-CMS"],
+    github: "https://github.com/BenitoPedro13/fa-moveis",
+    live: "https://fa-moveis.vercel.app",
+    image: "/projects/fa-moveis/home.png",
+    screenshots: [
+      { src: "/projects/fa-moveis/home.png", alt: "F&A Móveis homepage hero with the Roupeiro Mônaco Plus and its real 2,30 × 2,40 m dimension lines" },
+      { src: "/projects/fa-moveis/produtos.png", alt: "F&A Móveis /produtos catalogue with category filters and real measurements on every card" },
+      { src: "/projects/fa-moveis/produto.png", alt: "F&A Móveis product page showing L × A × P measurements and the WhatsApp CTA" },
+    ],
+    quickFacts: [
+      { label: "Catalogue", value: "13 real products, 10 priced" },
+      { label: "Conversion", value: "wa.me, no cart, no checkout" },
+      { label: "Data", value: "Typed TS, no CMS, no database" },
+      { label: "Measured", value: "Lighthouse 93 perf, 100 a11y" },
+    ],
+    problem:
+      "Fátima has run a neighbourhood furniture business in Rio de Janeiro for years with no website — just a Facebook page that had gone dormant since February 2022. She resells factory furniture, delivers it, and assembles it, and every sale already happened over WhatsApp. This was a paid client project on a tight budget where the demo had to come before the money.",
+    approach:
+      "The site is deliberately backend-less: a typed TypeScript catalogue in content/, no CMS, no database, no monthly bill. Every measurement is stored as a number in centimetres and formatted at the edge — never hand-typed as a display string — and every wa.me link is built by one function reading her real phone number from a single content module. Nothing outside lib/catalog/source.*.ts is allowed to import a Shopify type, which keeps a later Shopify upsell a one-module swap instead of a rewrite. Where a price wasn't confirmed, the page says so — 'Consulte o preço' — instead of shipping a plausible number.",
+    outcome:
+      "Live at fa-moveis.vercel.app with 13 real products — the 27-item illustrative catalogue used to win the pitch was retired once real supplier stock replaced it. 10 of the 13 now carry a confirmed price; the other 3 show an honest 'Consulte o preço'. A production build measured Lighthouse 93 performance and 100 accessibility on /produtos, CLS 0, every product image under 32 KB against a 180 KB budget.",
+    sections: [
+      {
+        title: "A demo that had to come before the money",
+        body: "This was a paid client project on a tight budget, and a working site — built on her real brand, shown to her on her own phone — was what won the job in the first place. Real stock replaced the original illustrative catalogue only once it existed.",
+      },
+      {
+        title: "Nothing outside the seam touches Shopify",
+        body: "Every component is written against a domain Produto type. A later move to Shopify, or any other backend, only has to change the files behind lib/catalog/source.*.ts — nothing else in the app needs to know the difference.",
+      },
+      {
+        title: "Honest pricing, not estimated pricing",
+        body: "10 of 13 products carry a confirmed price, sourced from her own D'Doro line (3 pieces, priced via WhatsApp) and a second Novo Horizonte supplier (10 pieces, priced from a real supplier sheet, using the same freight-and-tax markup as an earlier sibling project). The remaining 3 say 'Consulte o preço' rather than a plausible guess.",
+      },
+    ],
+    process: [
+      {
+        phase: "01",
+        title: "Scaffold on her real brand",
+        body: "Name, mark, the rose accent (#A87C7C), and a Didone serif were already hers, evidenced in her own Facebook video — the job was bringing an existing identity onto the web with better craft, never redesigning it from zero.",
+      },
+      {
+        phase: "02",
+        title: "A typed catalogue, no CMS",
+        body: "content/produtos.ts, categorias.ts, ambientes.ts, and loja.ts became the single source of truth for every page and component.",
+      },
+      {
+        phase: "03",
+        title: "Real stock, real prices",
+        body: "The 27-product illustrative catalogue was removed once real supplier stock replaced it — 3 D'Doro pieces from her own catalogue QR codes, 10 Novo Horizonte pieces priced from a supplier sheet.",
+      },
+      {
+        phase: "04",
+        title: "The real-device checklist",
+        body: "A pass against the live deployment, not localhost, caught two defects invisible from a dev server: every WhatsApp message was shipping a literal localhost URL, and /produtos had no Open Graph card.",
+      },
+    ],
+    architecture: [
+      {
+        layer: "Client",
+        label: "Next.js App Router",
+        detail: "Server-rendered catalogue, product, and home routes — zero client components in the shipped build.",
+      },
+      {
+        layer: "Catalogue",
+        label: "content/*.ts",
+        detail: "Typed product, category, and store data — the only source any page or component is allowed to read.",
+      },
+      {
+        layer: "Conversion",
+        label: "lib/whatsapp.ts",
+        detail: "The one wa.me builder used by every product CTA, reading the phone number from content/loja.ts.",
+      },
+      {
+        layer: "Hosting",
+        label: "Vercel",
+        detail: "Fully static, no database, no auth — a production build fails on purpose if SITE_URL would resolve to localhost.",
+      },
+    ],
+    features: [
+      {
+        title: "Real measurements, formatted at the edge",
+        body: "Every dimension is stored as a number in centimetres and rendered as 'L × A × P' — never typed as a display string.",
+      },
+      {
+        title: "Honest pricing",
+        body: "10 of 13 products show a confirmed price; the other 3 say 'Consulte o preço' instead of a guess.",
+      },
+      {
+        title: "One WhatsApp builder",
+        body: "Every product page resolves through the same pre-filled wa.me link — no second place composes that URL.",
+      },
+      {
+        title: "No cart, no checkout",
+        body: "The whole product terminates in a conversation with the owner, matching how she already sells.",
+      },
+    ],
+    challenges: [
+      {
+        title: "A localhost URL that shipped to production",
+        body: "An unset SITE_URL fell back silently to localhost, so the deployed site's own WhatsApp messages carried a dead link — caught by a real-device pass against the live URL, not the dev server, and fixed by failing the build outright on that exact misconfiguration.",
+      },
+      {
+        title: "Sourcing prices for stock that wasn't hers to guess",
+        body: "Novo Horizonte's 10 pieces needed real supplier-sheet numbers and the same freight-plus-tax markup logic already used on a sibling project — 3 items still show 'Consulte o preço' because that number wasn't confirmed yet.",
+      },
+      {
+        title: "Retiring the demo catalogue without losing the pitch",
+        body: "The original 27-item illustrative catalogue existed to win the job before real stock was ready; removing it once 13 real products existed meant the site never quietly kept selling furniture that wasn't actually in stock.",
+      },
+    ],
+    learnings: [
+      "A working demo built on the client's real brand — even before real stock exists — is what actually wins a tight-budget pitch, more than a polished mockup.",
+      "Failing a production build outright on a known misconfiguration (SITE_URL resolving to localhost) catches a class of bug a real-device checklist would otherwise keep re-discovering.",
+      "An honest 'Consulte o preço' is a better default than a plausible price, especially on a site the owner shows to her own customers.",
+    ],
+  },
+  {
+    slug: "oishi",
+    title: "Oishi Cozinha Japonesa",
+    tagline: "A rodízio's real anti-waste discount, built as the whole site's thesis",
+    plainEnglish:
+      "A restaurant site built around one real, checkable discount: R$ 20 off per person if the whole table finishes what it orders. Every price tier shows both numbers together, never the discount alone.",
+    year: "2026",
+    status: "In development",
+    category: "Product",
+    featured: false,
+    accent: "#C6151B",
+    role: "Solo full stack developer",
+    timeline: "Ongoing",
+    team: "Solo",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "GSAP", "Lenis", "Motion"],
+    tags: ["Restaurant", "Local Business", "Motion"],
+    github: "https://github.com/BenitoPedro13/oishi",
+    live: "https://oishicozinha.vercel.app",
+    image: "/projects/oishi/home.png",
+    screenshots: [
+      { src: "/projects/oishi/home.png", alt: "Oishi Cozinha Japonesa hero with the 味 kanji set inside the hinomaru disc" },
+      { src: "/projects/oishi/cardapio.png", alt: "Rodízio Chisai showing both prices, R$ 74,90 and R$ 54,90, with the sem-desperdício condition" },
+      { src: "/projects/oishi/rodizio-com-sashimi.png", alt: "Rodízio com sashimi's two tiers, each with both prices and all three conversion exits" },
+      { src: "/projects/oishi/reserva.png", alt: "Oishi's reservation form, ending in a pre-filled WhatsApp message, with unconfirmed policy fields marked honestly" },
+      { src: "/projects/oishi/contato.png", alt: "Oishi's contact page with the real address and phone, and an honestly flagged unconfirmed city detail" },
+    ],
+    quickFacts: [
+      { label: "Thesis", value: "R$ 20 off/person, whole table finishes" },
+      { label: "Photography", value: "44 photos graded by ffmpeg luminance" },
+      { label: "Exits", value: "Delivery, reserva, WhatsApp — all wa.me" },
+      { label: "Unconfirmed facts", value: "Rendered as '[a confirmar]', never guessed" },
+    ],
+    problem:
+      "Oishi is a São Gonçalo rodízio restaurant with 17K Instagram followers and no website — its menu and four price tiers lived only inside JPEGs, reservations arrived by phone, and delivery ran through a third-party app. Its real differentiator — a genuine, checkable anti-waste discount — had nowhere on the internet to be said out loud.",
+    approach:
+      "The whole site is built around one sentence already true of the business: 'Coma tudo o que pedir. Pague menos por isso.' Every rodízio tier always shows both prices together with the condition spelled out, never the discounted number alone. Reference photography couldn't carry the site — 44 real photographs were graded by mean luminance with ffmpeg, and two-thirds measured too dark for a full-bleed hero — so the design is type-led and colour-led instead, built on the brand's own sampled hinomaru gradient. Every fact that wasn't confirmed renders as an honest '[a confirmar]' inline rather than a plausible guess.",
+    outcome:
+      "Live at oishicozinha.vercel.app across five routes — home, cardápio, two rodízio chapters, reserva, and contato — where every price tier renders both numbers and the real condition, the reservation form ends in a pre-filled WhatsApp message, and the still-open questions about hours and party limits stay visibly marked rather than silently answered.",
+    sections: [
+      {
+        title: "The two-price component is the whole product",
+        body: "Every rodízio tier renders through one component that always shows the full price struck through, the anti-waste price live, and the verbatim condition beneath it. The discount only applies if the whole table finishes its food, so showing the lower price alone would be a false price — the condition is structurally part of the component, never separable copy.",
+      },
+      {
+        title: "Designing without a photo shoot",
+        body: "44 reference photographs were graded by mean luminance with ffmpeg before any layout decision: 15 survive full-bleed, 20 work only in a framed panel, 9 are thumbnail-only, and none show the room or the team. Two-thirds measuring too dark for a photography-led design meant the entire visual system had to carry the brand through type and colour instead — the hinomaru's red is a real gradient sampled from the logo, measured at 3.17:1 contrast, which is why it's reserved for fills and display type rather than body copy.",
+      },
+      {
+        title: "A register of every allowed fact",
+        body: "A data-inventory document tracks every price, hour, and detail the site is allowed to state, each with its own source. A phone number that disagreed between WhatsApp deep links and printed flyers is contained to one builder function; an unconfirmed reservation policy or neighbourhood detail renders as a visible '[a confirmar]' instead of a plausible placeholder.",
+      },
+    ],
+    process: [
+      {
+        phase: "01",
+        title: "Measure before designing",
+        body: "44 reference photographs were graded by mean luminance with ffmpeg before any layout decision.",
+      },
+      {
+        phase: "02",
+        title: "Sample the brand instead of choosing it",
+        body: "The hinomaru's red is a real vertical gradient sampled from the logo itself, not a stock 'Japanese red'.",
+      },
+      {
+        phase: "03",
+        title: "Build the two-price component once",
+        body: "Every rodízio tier renders through one component that always shows both prices and the verbatim condition.",
+      },
+      {
+        phase: "04",
+        title: "Register every allowed fact",
+        body: "A data-inventory document tracks every price, hour, and detail the site is allowed to state, each with its source.",
+      },
+    ],
+    architecture: [
+      {
+        layer: "Client",
+        label: "Next.js App Router",
+        detail: "Five static routes — home, cardápio, rodízio/[slug], reserva, contato — no server data, no database.",
+      },
+      {
+        layer: "Motion",
+        label: "GSAP + Lenis + Motion",
+        detail: "Scroll-scrubbed cinema on the home route, smooth native scroll everywhere, component-level hover and reveal motion.",
+      },
+      {
+        layer: "Content",
+        label: "Typed TS, no CMS",
+        detail: "Menu, prices, and facts live in src/content/, gated by a 'never invent a fact' rule enforced across the codebase.",
+      },
+      {
+        layer: "Conversion",
+        label: "lib/contato/whatsapp.ts",
+        detail: "The one wa.me builder every CTA on the site resolves through — delivery and reservations both terminate here.",
+      },
+    ],
+    features: [
+      {
+        title: "The two-price component",
+        body: "Every tier always shows the full price, the anti-waste price, and the real condition together.",
+      },
+      {
+        title: "Luminance-graded photography",
+        body: "Every photo is shown at the size its own measured brightness actually supports.",
+      },
+      {
+        title: "Honest unresolved facts",
+        body: "An unconfirmed hour, phone digit, or reservation rule renders as a visible '[a confirmar]'.",
+      },
+      {
+        title: "Three exits, one builder each",
+        body: "Delivery, reservation, and WhatsApp all resolve through single-purpose link builders.",
+      },
+    ],
+    challenges: [
+      {
+        title: "A phone number that disagreed with itself",
+        body: "WhatsApp deep links and two social posts gave one number; two printed flyers gave another. The conflict is contained to one builder function so the site can ship around it without resolving it everywhere it's used.",
+      },
+      {
+        title: "Designing without a photo shoot",
+        body: "Two-thirds of the 44 reference photographs measured too dark or too inconsistent for a photography-led design, so the entire visual system had to carry the brand through type and colour instead of imagery.",
+      },
+      {
+        title: "Keeping the discount honest, not just prominent",
+        body: "The anti-waste price only applies if the whole table finishes its food — showing the lower number without that condition would be a false price.",
+      },
+    ],
+    learnings: [
+      "Measuring reference material — luminance, contrast, colour — before making a design decision catches constraints a glance would miss: two-thirds of the reference photos being too dark decided the whole visual direction.",
+      "A discount is only honest if its condition is structurally part of the same component as the price — copy placed next to a number is one edit away from drifting apart from it.",
+      "Registering every allowed fact in one document, with its source, is what makes 'never invent a fact' enforceable rather than aspirational.",
+    ],
+  },
+  {
     slug: "trision",
     title: "Trísion Eyewear",
     tagline: "One catalogue, a showcase for every reseller — brand site and multi-tenant platform for a Brazilian eyewear label",
